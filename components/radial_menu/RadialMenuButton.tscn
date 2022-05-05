@@ -1,15 +1,7 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/icons/bleeding-eye.png" type="Texture" id=1]
-[ext_resource path="res://assets/icons/dripping-blade.png" type="Texture" id=2]
-[ext_resource path="res://assets/icons/all-for-one.png" type="Texture" id=3]
-[ext_resource path="res://assets/icons/angel-wings.png" type="Texture" id=4]
 [ext_resource path="res://components/radial_menu/CooldownButton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/icons/battered-axe.png" type="Texture" id=6]
-[ext_resource path="res://assets/icons/bookmark.png" type="Texture" id=7]
-[ext_resource path="res://assets/icons/energy-arrow.png" type="Texture" id=8]
-[ext_resource path="res://assets/icons/arrows-shield.png" type="Texture" id=9]
-[ext_resource path="res://assets/icons/hospital-cross.png" type="Texture" id=10]
+[ext_resource path="res://assets/icons/colors/white_circlex64.png" type="Texture" id=7]
 [ext_resource path="res://components/radial_menu/RadialMenuButton.gd" type="Script" id=11]
 
 [sub_resource type="InputEventAction" id=1]
@@ -17,6 +9,21 @@ action = "ui_focus_next"
 
 [sub_resource type="ShortCut" id=2]
 shortcut = SubResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "ColorChange"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0.00392157, 0.00392157, 1 ) ]
+}
 
 [node name="RadialMenuButton" type="TextureButton"]
 margin_left = 469.053
@@ -28,9 +35,6 @@ shortcut_in_tooltip = false
 shortcut = SubResource( 2 )
 texture_normal = ExtResource( 7 )
 script = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Buttons" type="Control" parent="."]
 margin_left = -469.053
@@ -42,53 +46,43 @@ __meta__ = {
 }
 
 [node name="CooldownButton2" parent="Buttons" instance=ExtResource( 5 )]
+self_modulate = Color( 1, 0, 0, 1 )
 margin_right = 64.0
 margin_bottom = 64.0
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 7 )
 cooldown = 1.0
 
 [node name="CooldownButton3" parent="Buttons" instance=ExtResource( 5 )]
+self_modulate = Color( 0, 1, 0.0627451, 1 )
 margin_right = 64.0
 margin_bottom = 64.0
-texture_normal = ExtResource( 4 )
+texture_normal = ExtResource( 7 )
 cooldown = 4.0
 
 [node name="CooldownButton4" parent="Buttons" instance=ExtResource( 5 )]
+self_modulate = Color( 1, 0.984314, 0, 1 )
 margin_right = 64.0
 margin_bottom = 64.0
-texture_normal = ExtResource( 9 )
+texture_normal = ExtResource( 7 )
 cooldown = 3.2
 
 [node name="CooldownButton5" parent="Buttons" instance=ExtResource( 5 )]
+self_modulate = Color( 0.0313726, 0, 1, 1 )
 margin_right = 64.0
 margin_bottom = 64.0
-texture_normal = ExtResource( 6 )
+texture_normal = ExtResource( 7 )
 cooldown = 0.5
 
 [node name="CooldownButton6" parent="Buttons" instance=ExtResource( 5 )]
+self_modulate = Color( 0.945098, 0, 1, 1 )
 margin_right = 64.0
 margin_bottom = 64.0
-texture_normal = ExtResource( 1 )
+texture_normal = ExtResource( 7 )
 cooldown = 10.0
 
-[node name="CooldownButton7" parent="Buttons" instance=ExtResource( 5 )]
-margin_right = 64.0
-margin_bottom = 64.0
-texture_normal = ExtResource( 10 )
-cooldown = 30.0
-
-[node name="CooldownButton8" parent="Buttons" instance=ExtResource( 5 )]
-margin_right = 64.0
-margin_bottom = 64.0
-texture_normal = ExtResource( 2 )
-cooldown = 6.0
-
-[node name="CooldownButton9" parent="Buttons" instance=ExtResource( 5 )]
-margin_right = 64.0
-margin_bottom = 64.0
-texture_normal = ExtResource( 8 )
-cooldown = 4.5
-
 [node name="Tween" type="Tween" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/ColorChange = SubResource( 3 )
 
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

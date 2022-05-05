@@ -17,6 +17,7 @@ func _process(delta):
 	
 	
 func _on_CooldownButton_pressed():
+	$RadialMenuButton.get("name")
 	disabled = true
 	set_process(true)
 	$Timer.start()
