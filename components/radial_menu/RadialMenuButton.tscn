@@ -31,7 +31,6 @@ script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-speed = 0.25
 
 [node name="Buttons" type="Control" parent="."]
 margin_left = -469.053
@@ -91,4 +90,5 @@ texture_normal = ExtResource( 8 )
 cooldown = 4.5
 
 [node name="Tween" type="Tween" parent="."]
+
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
