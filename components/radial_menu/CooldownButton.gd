@@ -8,6 +8,8 @@ func _ready():
 	$CooldownDisplay.value = 0
 	$CooldownDisplay.texture_progress = texture_normal
 	$Timer.wait_time = cooldown
+	connect("pressed",get_tree().get_root().get_node("RadialMenuButton"),"_on_ChildButton_Pressed",[self])
+	connect("pressed",get_tree().get_root().get_node("RadialMenuButton"),"_on_StartButton_pressed")
 	set_process(false)
 
 
@@ -17,7 +19,6 @@ func _process(delta):
 	
 	
 func _on_CooldownButton_pressed():
-	$RadialMenuButton.get("name")
 	disabled = true
 	set_process(true)
 	$Timer.start()

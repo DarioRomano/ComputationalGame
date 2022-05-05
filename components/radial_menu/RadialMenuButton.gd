@@ -14,6 +14,8 @@ func _ready():
 		b.rect_position = rect_position
 	connect("pressed", self, "_on_StartButton_pressed")
 
+func _on_ChildButton_pressed():
+	print("this is a test if it worked")
 
 func show_menu():
 	print("showing")
@@ -52,3 +54,9 @@ func _on_Tween_tween_all_completed():
 	active = not active
 	if not active:
 		$Buttons.hide()
+
+func _on_ChildButton_Pressed(button):
+	self.self_modulate=button.self_modulate
+
+func _on_CooldownButton2_pressed():
+	pass # Replace with function body.
