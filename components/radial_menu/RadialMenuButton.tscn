@@ -11,18 +11,18 @@ action = "ui_focus_next"
 shortcut = SubResource( 1 )
 
 [sub_resource type="Animation" id=3]
-resource_name = "ColorChange"
+resource_name = "ScaleChange"
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:self_modulate")
+tracks/0/path = NodePath(".:rect_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0.2, 0.45, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 4.59479 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0.00392157, 0.00392157, 1 ) ]
+"values": [ Vector2( 1.2, 1.2 ), Vector2( 0.85, 0.85 ), Vector2( 1, 1 ) ]
 }
 
 [node name="RadialMenuButton" type="TextureButton"]
@@ -30,7 +30,7 @@ margin_left = 469.053
 margin_top = 339.884
 margin_right = 533.053
 margin_bottom = 403.884
-rect_pivot_offset = Vector2( 32, 64 )
+rect_pivot_offset = Vector2( 31.947, 33.116 )
 shortcut_in_tooltip = false
 shortcut = SubResource( 2 )
 texture_normal = ExtResource( 7 )
@@ -41,48 +41,40 @@ margin_left = -469.053
 margin_top = -339.884
 margin_right = -429.053
 margin_bottom = -299.884
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CooldownButton2" parent="Buttons" instance=ExtResource( 5 )]
-self_modulate = Color( 1, 0, 0, 1 )
-margin_right = 64.0
-margin_bottom = 64.0
-texture_normal = ExtResource( 7 )
-cooldown = 1.0
 
 [node name="CooldownButton3" parent="Buttons" instance=ExtResource( 5 )]
 self_modulate = Color( 0, 1, 0.0627451, 1 )
 margin_right = 64.0
 margin_bottom = 64.0
 texture_normal = ExtResource( 7 )
-cooldown = 4.0
 
 [node name="CooldownButton4" parent="Buttons" instance=ExtResource( 5 )]
 self_modulate = Color( 1, 0.984314, 0, 1 )
 margin_right = 64.0
 margin_bottom = 64.0
 texture_normal = ExtResource( 7 )
-cooldown = 3.2
 
 [node name="CooldownButton5" parent="Buttons" instance=ExtResource( 5 )]
 self_modulate = Color( 0.0313726, 0, 1, 1 )
 margin_right = 64.0
 margin_bottom = 64.0
 texture_normal = ExtResource( 7 )
-cooldown = 0.5
 
 [node name="CooldownButton6" parent="Buttons" instance=ExtResource( 5 )]
 self_modulate = Color( 0.945098, 0, 1, 1 )
 margin_right = 64.0
 margin_bottom = 64.0
 texture_normal = ExtResource( 7 )
-cooldown = 10.0
+
+[node name="CooldownButton7" parent="Buttons" instance=ExtResource( 5 )]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_right = 64.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 7 )
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/ColorChange = SubResource( 3 )
+anims/ScaleChange = SubResource( 3 )
 
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

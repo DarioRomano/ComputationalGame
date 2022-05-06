@@ -5,14 +5,10 @@
 
 [node name="Node2D2" type="Node2D"]
 
-[node name="RadialMenuButton" parent="." instance=ExtResource( 2 )]
-
 [node name="MenuWithButtons" parent="." instance=ExtResource( 1 )]
 margin_left = 780.0
+margin_top = 2.0
 margin_right = 1027.0
-margin_bottom = 190.0
+margin_bottom = 193.0
 
-[node name="PanelContainer" parent="MenuWithButtons" index="1"]
-margin_right = 0.000289917
-
-[editable path="MenuWithButtons"]
+[node name="RadialMenuButton" parent="." instance=ExtResource( 2 )]
