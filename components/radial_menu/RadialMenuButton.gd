@@ -14,6 +14,10 @@ func _ready():
 		b.rect_position = rect_position
 	connect("pressed", self, "_on_StartButton_pressed")
 
+func add_animation(col):
+	$Tween.interpolate_property(self,"self_modulate",self.self_modulate,col,0.2,Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.start()
+	$AnimationPlayer.play("ScaleChange")
 
 func show_menu():
 	print("showing")
