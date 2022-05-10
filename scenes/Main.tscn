@@ -8,13 +8,15 @@
 
 [node name="RadialMenuButton" parent="." instance=ExtResource( 2 )]
 
-[node name="MenuWithButtons" parent="." instance=ExtResource( 1 )]
-margin_left = 1676.0
-margin_top = 2.0
-margin_right = 1923.0
-margin_bottom = 193.0
-
 [node name="TouchCamera" type="Camera2D" parent="."]
 offset = Vector2( 515, 300 )
 current = true
 script = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MenuWithButtons" parent="CanvasLayer" instance=ExtResource( 1 )]
+margin_left = -244.0
+margin_top = 2.0
+margin_right = 3.0
+margin_bottom = 193.0
