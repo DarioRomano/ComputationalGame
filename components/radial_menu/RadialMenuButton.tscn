@@ -29,32 +29,27 @@ margin_right = -429.053
 margin_bottom = -299.884
 
 [node name="CooldownButton3" parent="Buttons" instance=ExtResource( 5 )]
-self_modulate = Color( 0, 1, 0.0627451, 1 )
 margin_right = 64.0
 margin_bottom = 64.0
 rect_pivot_offset = Vector2( 256, 256 )
 texture_normal = ExtResource( 1 )
 
 [node name="CooldownButton4" parent="Buttons" instance=ExtResource( 5 )]
-self_modulate = Color( 1, 0.984314, 0, 1 )
 margin_right = 64.0
 margin_bottom = 64.0
 texture_normal = ExtResource( 1 )
 
 [node name="CooldownButton5" parent="Buttons" instance=ExtResource( 5 )]
-self_modulate = Color( 0.0313726, 0, 1, 1 )
 margin_right = 64.0
 margin_bottom = 64.0
 texture_normal = ExtResource( 1 )
 
 [node name="CooldownButton6" parent="Buttons" instance=ExtResource( 5 )]
-self_modulate = Color( 0.945098, 0, 1, 1 )
 margin_right = 64.0
 margin_bottom = 64.0
 texture_normal = ExtResource( 1 )
 
 [node name="CooldownButton7" parent="Buttons" instance=ExtResource( 5 )]
-self_modulate = Color( 1, 0, 0, 1 )
 margin_right = 64.0
 margin_bottom = 64.0
 texture_normal = ExtResource( 1 )

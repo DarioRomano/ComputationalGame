@@ -1,8 +1,11 @@
 extends TextureButton
 
-export var radius = 120
+export var radius = 768
 export var speed = 0.25
 export var negated=false
+export var current_color = Color("#FFFFFF")
+export var colors= {"white":Color("#FFFFFF"),"red":Color("#F52300"),"blue":Color("#009CF5"),"orange":Color("#FBBB0D"),"green":Color("#9CF500")}
+
 
 var base_scale=Vector2(0.25,0.25)
 var num
@@ -15,9 +18,13 @@ var _crossed_texture=load("res://assets/icons/colors/white_circle_crossedx512.pn
 func _ready():
 	add_wobble_animation()
 	$Buttons.hide()
+	self.rect_scale=base_scale
 	num = $Buttons.get_child_count()
+	var count=0
 	for b in $Buttons.get_children():
 		b.rect_position = rect_position
+		b.self_modulate=colors.values()[count]
+		count=count+1
 	connect("button_up", self, "_on_StartButton_released")
 	connect("button_down", self,"_onStartButton_pushed")
 
@@ -32,22 +39,23 @@ func add_wobble_animation():
 	$AnimationPlayer.add_animation("Wobble",animation)
 	print(self.rect_scale)
 
-func add_animation(col):
-	$Tween.interpolate_property(self,"self_modulate",self.self_modulate,col,0.2,Tween.TRANS_LINEAR, Tween.EASE_IN)
+func add_animation(button):
+	$Tween.interpolate_property(self,"self_modulate",self.self_modulate,button.self_modulate,0.2,Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.start()
 	$AnimationPlayer.play("Wobble")
+	current_color=button.self_modulate
 
 func show_menu():
 	print("showing")
 	$Buttons.show()
-	var spacing = TAU / num
+	var spacing = TAU / num	
 	for b in $Buttons.get_children():
 		var a = spacing * b.get_position_in_parent() - PI / 2
 		var dest = b.rect_position + Vector2(radius, 0).rotated(a)
 		$Tween.interpolate_property(b, "rect_position", b.rect_position,
 				dest, speed, Tween.TRANS_BACK, Tween.EASE_OUT)
-		$Tween.interpolate_property(b, "rect_scale", base_scale*.5,
-				base_scale*Vector2.ONE, speed, Tween.TRANS_LINEAR)	
+		$Tween.interpolate_property(b, "rect_scale", Vector2(.5,.5),
+				Vector2.ONE, speed, Tween.TRANS_LINEAR)	
 	$Tween.start()
 
 
@@ -57,7 +65,7 @@ func hide_menu():
 		$Tween.interpolate_property(b, "rect_position", b.rect_position,
 				rect_position, speed, Tween.TRANS_BACK, Tween.EASE_IN)
 		$Tween.interpolate_property(b, "rect_scale", null,
-				base_scale*.5, speed, Tween.TRANS_LINEAR)
+				Vector2(.5,.5), speed, Tween.TRANS_LINEAR)
 	$Tween.start()	
 	$AnimationPlayer.play("Wobble")
 
