@@ -29,8 +29,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -256.0
 margin_top = -256.0
-margin_right = -216.0
-margin_bottom = -216.0
+margin_right = -256.0
+margin_bottom = -256.0
 
 [node name="CooldownButton3" parent="Buttons" instance=ExtResource( 5 )]
 margin_right = 512.0
