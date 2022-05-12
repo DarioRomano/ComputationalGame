@@ -19,6 +19,16 @@ func _process(delta):
 
 
 func _unhandled_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_WHEEL_DOWN:
+			var new_zoom = clamp(zoom.x * 1.05, min_zoom, max_zoom)
+			zoom = Vector2.ONE * new_zoom
+			# call the zoom function
+			# zoom out
+		if event.button_index == BUTTON_WHEEL_UP:
+			var new_zoom = clamp(zoom.x * 0.95, min_zoom, max_zoom)
+			zoom = Vector2.ONE * new_zoom
+		# call the zoom function
 	if event is InputEventScreenTouch:
 		if event.pressed:
 			events[event.index] = event
