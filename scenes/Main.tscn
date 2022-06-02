@@ -8,6 +8,33 @@
 
 [node name="color_sorter" parent="." instance=ExtResource( 2 )]
 
+[node name="Left" parent="color_sorter/MachineBody" index="3"]
+colors = {
+"blue": Color( 0, 0.611765, 0.960784, 1 ),
+"green": Color( 0.611765, 0.960784, 0, 1 ),
+"orange": Color( 0.984314, 0.733333, 0.0509804, 1 ),
+"red": Color( 0.960784, 0.137255, 0, 1 ),
+"white": Color( 1, 1, 1, 1 )
+}
+
+[node name="Right" parent="color_sorter/MachineBody" index="4"]
+colors = {
+"blue": Color( 0, 0.611765, 0.960784, 1 ),
+"green": Color( 0.611765, 0.960784, 0, 1 ),
+"orange": Color( 0.984314, 0.733333, 0.0509804, 1 ),
+"red": Color( 0.960784, 0.137255, 0, 1 ),
+"white": Color( 1, 1, 1, 1 )
+}
+
+[node name="Up" parent="color_sorter/MachineBody" index="5"]
+colors = {
+"blue": Color( 0, 0.611765, 0.960784, 1 ),
+"green": Color( 0.611765, 0.960784, 0, 1 ),
+"orange": Color( 0.984314, 0.733333, 0.0509804, 1 ),
+"red": Color( 0.960784, 0.137255, 0, 1 ),
+"white": Color( 1, 1, 1, 1 )
+}
+
 [node name="TouchCamera" type="Camera2D" parent="."]
 offset = Vector2( 515, 300 )
 current = true
@@ -20,3 +47,5 @@ margin_left = -244.0
 margin_top = 2.0
 margin_right = 3.0
 margin_bottom = 193.0
+
+[editable path="color_sorter"]

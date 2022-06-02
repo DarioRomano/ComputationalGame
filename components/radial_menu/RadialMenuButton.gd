@@ -1,6 +1,6 @@
 extends TextureButton
 
-export var radius = 768
+export var radius = 900
 export var speed = 0.25
 export var negated=false
 export var current_color = Color("#FFFFFF")
@@ -22,11 +22,18 @@ func _ready():
 	num = $Buttons.get_child_count()
 	var count=0
 	for b in $Buttons.get_children():
-		b.rect_position = rect_position
-		b.self_modulate=colors.values()[count]
+		b.rect_position = Vector2(0,0)
+		var c
+		match count:
+			0:c=colors.white
+			1:c=colors.red
+			2:c=colors.blue
+			3:c=colors.green
+		b.self_modulate=c
 		count=count+1
 	connect("button_up", self, "_on_StartButton_released")
 	connect("button_down", self,"_onStartButton_pushed")
+	draw_circle(Vector2(0,0), 5, Color(255, 0, 0))
 
 func add_wobble_animation():
 	var animation = Animation.new()
@@ -47,12 +54,15 @@ func add_animation(button):
 
 func show_menu():
 	print("showing")
+	print("rect position is ", rect_position)
 	$Buttons.show()
-	var spacing = TAU / num	
+	#var spacing = TAU / num
+	var spacing = PI / (num-1)
 	for b in $Buttons.get_children():
 		var a = spacing * b.get_position_in_parent() - PI / 2
 		var dest = b.rect_position + Vector2(radius, 0).rotated(a)
-		$Tween.interpolate_property(b, "rect_position", b.rect_position,
+		print("dest ", b, " is ", dest)
+		$Tween.interpolate_property(b, "rect_position", Vector2(0,0),
 				dest, speed, Tween.TRANS_BACK, Tween.EASE_OUT)
 		$Tween.interpolate_property(b, "rect_scale", Vector2(.5,.5),
 				Vector2.ONE, speed, Tween.TRANS_LINEAR)	
@@ -61,9 +71,11 @@ func show_menu():
 
 func hide_menu():
 	print("hiding")
+	print("rect position is ", rect_position)
 	for b in $Buttons.get_children():
+		print("brect position is ", b.rect_position)
 		$Tween.interpolate_property(b, "rect_position", b.rect_position,
-				rect_position, speed, Tween.TRANS_BACK, Tween.EASE_IN)
+				Vector2(0,0), speed, Tween.TRANS_BACK, Tween.EASE_IN)
 		$Tween.interpolate_property(b, "rect_scale", null,
 				Vector2(.5,.5), speed, Tween.TRANS_LINEAR)
 	$Tween.start()	
@@ -75,6 +87,10 @@ func _on_StartButton_released():
 	print("release")
 	print(self.rect_scale)
 	if not holding:
+		var scene_trs =load("res://components/color_sorter/color_sorter.tscn")
+		var scene=scene_trs.instance()
+		#add_child(scene)
+		#$color_sorter.set("scale",Vector2(.1,.1))
 		disabled = true
 		if active:
 			hide_menu()
