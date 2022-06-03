@@ -4,7 +4,7 @@
 [ext_resource path="res://components/radial_menu/RadialMenuButton.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 173.25, 173.25 )
+extents = Vector2( 132, 107 )
 
 [node name="color_sorter" type="Node2D"]
 

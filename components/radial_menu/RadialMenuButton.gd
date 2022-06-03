@@ -3,8 +3,8 @@ extends TextureButton
 export var radius = 900
 export var speed = 0.25
 export var negated=false
-export var current_color = Color("#FFFFFF")
 export var colors= {"white":Color("#FFFFFF"),"red":Color("#F52300"),"blue":Color("#009CF5"),"orange":Color("#FBBB0D"),"green":Color("#9CF500")}
+export var current_color = Color("#FFFFFF")
 
 signal radial_showing
 
@@ -18,6 +18,7 @@ var _normal_texture=load("res://assets/icons/colors/white_circlex512.png")
 var _crossed_texture=load("res://assets/icons/colors/white_circle_crossedx512.png")
 
 func _ready():
+	current_color=colors.white
 	add_wobble_animation()
 	$Buttons.hide()
 	self.rect_scale=base_scale
