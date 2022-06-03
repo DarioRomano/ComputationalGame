@@ -35,7 +35,6 @@ func _ready():
 		count=count+1
 	connect("button_up", self, "_on_StartButton_released")
 	connect("button_down", self,"_onStartButton_pushed")
-	draw_circle(Vector2(0,0), 5, Color(255, 0, 0))
 
 func add_wobble_animation():
 	var animation = Animation.new()
