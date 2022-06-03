@@ -6,11 +6,13 @@ export var negated=false
 export var current_color = Color("#FFFFFF")
 export var colors= {"white":Color("#FFFFFF"),"red":Color("#F52300"),"blue":Color("#009CF5"),"orange":Color("#FBBB0D"),"green":Color("#9CF500")}
 
+signal radial_showing
 
 var base_scale=Vector2(0.25,0.25)
 var num
 var active = false
 var holding=false
+var expanded=false
 
 var _normal_texture=load("res://assets/icons/colors/white_circlex512.png")
 var _crossed_texture=load("res://assets/icons/colors/white_circle_crossedx512.png")
@@ -53,33 +55,34 @@ func add_animation(button):
 	current_color=button.self_modulate
 
 func show_menu():
+	emit_signal("radial_showing",self)
 	print("showing")
-	print("rect position is ", rect_position)
 	$Buttons.show()
 	#var spacing = TAU / num
 	var spacing = PI / (num-1)
 	for b in $Buttons.get_children():
 		var a = spacing * b.get_position_in_parent() - PI / 2
 		var dest = b.rect_position + Vector2(radius, 0).rotated(a)
-		print("dest ", b, " is ", dest)
 		$Tween.interpolate_property(b, "rect_position", Vector2(0,0),
 				dest, speed, Tween.TRANS_BACK, Tween.EASE_OUT)
-		$Tween.interpolate_property(b, "rect_scale", Vector2(.5,.5),
+		$Tween.interpolate_property(b, "rect_scale", Vector2(0,0),
 				Vector2.ONE, speed, Tween.TRANS_LINEAR)	
 	$Tween.start()
+	expanded=true
 
 
-func hide_menu():
+func hide_menu(wobble):
 	print("hiding")
-	print("rect position is ", rect_position)
-	for b in $Buttons.get_children():
-		print("brect position is ", b.rect_position)
-		$Tween.interpolate_property(b, "rect_position", b.rect_position,
-				Vector2(0,0), speed, Tween.TRANS_BACK, Tween.EASE_IN)
-		$Tween.interpolate_property(b, "rect_scale", null,
-				Vector2(.5,.5), speed, Tween.TRANS_LINEAR)
-	$Tween.start()	
-	$AnimationPlayer.play("Wobble")
+	if expanded:
+		for b in $Buttons.get_children():
+			$Tween.interpolate_property(b, "rect_position", b.rect_position,
+					Vector2(0,0), speed, Tween.TRANS_BACK, Tween.EASE_IN)
+			$Tween.interpolate_property(b, "rect_scale", null,
+					Vector2(0,0), speed, Tween.TRANS_LINEAR)
+		$Tween.start()	
+		#if wobble:
+		$AnimationPlayer.play("Wobble")
+		expanded=false
 
 
 func _on_StartButton_released():
@@ -87,13 +90,9 @@ func _on_StartButton_released():
 	print("release")
 	print(self.rect_scale)
 	if not holding:
-		var scene_trs =load("res://components/color_sorter/color_sorter.tscn")
-		var scene=scene_trs.instance()
-		#add_child(scene)
-		#$color_sorter.set("scale",Vector2(.1,.1))
 		disabled = true
 		if active:
-			hide_menu()
+			hide_menu(true)
 		else:
 			show_menu()
 	holding=false
@@ -125,3 +124,23 @@ func change_crosslines(visible):
 		self.texture_normal=_crossed_texture
 	else:
 		self.texture_normal=_normal_texture
+
+
+func _on_Down_radial_showing(s):
+	if s!=self:
+		hide_menu(false)
+
+
+func _on_Left_radial_showing(s):
+	if s!=self:
+		hide_menu(false)
+
+
+func _on_Right_radial_showing(s):
+	if s!=self:
+		hide_menu(false)
+
+
+func _on_Up_radial_showing(s):
+	if s!=self:
+		hide_menu(false)
