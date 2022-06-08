@@ -46,16 +46,3 @@ margin_top = -88.0
 margin_right = 536.0
 margin_bottom = 424.0
 rect_rotation = -90.0
-
-[connection signal="radial_showing" from="MachineBody/Down" to="MachineBody/Left" method="_on_Down_radial_showing"]
-[connection signal="radial_showing" from="MachineBody/Down" to="MachineBody/Right" method="_on_Down_radial_showing"]
-[connection signal="radial_showing" from="MachineBody/Down" to="MachineBody/Up" method="_on_Down_radial_showing"]
-[connection signal="radial_showing" from="MachineBody/Left" to="MachineBody/Down" method="_on_Left_radial_showing"]
-[connection signal="radial_showing" from="MachineBody/Left" to="MachineBody/Right" method="_on_Left_radial_showing"]
-[connection signal="radial_showing" from="MachineBody/Left" to="MachineBody/Up" method="_on_Left_radial_showing"]
-[connection signal="radial_showing" from="MachineBody/Right" to="MachineBody/Down" method="_on_Right_radial_showing"]
-[connection signal="radial_showing" from="MachineBody/Right" to="MachineBody/Left" method="_on_Right_radial_showing"]
-[connection signal="radial_showing" from="MachineBody/Right" to="MachineBody/Up" method="_on_Right_radial_showing"]
-[connection signal="radial_showing" from="MachineBody/Up" to="MachineBody/Down" method="_on_Up_radial_showing"]
-[connection signal="radial_showing" from="MachineBody/Up" to="MachineBody/Left" method="_on_Up_radial_showing"]
-[connection signal="radial_showing" from="MachineBody/Up" to="MachineBody/Right" method="_on_Up_radial_showing"]
