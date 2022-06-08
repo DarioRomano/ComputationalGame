@@ -33,26 +33,12 @@ margin_top = 20.0
 margin_right = 425.0
 margin_bottom = 532.0
 rect_rotation = 180.0
-colors = {
-"blue": Color( 0, 0.611765, 0.960784, 1 ),
-"green": Color( 0.611765, 0.960784, 0, 1 ),
-"orange": Color( 0.984314, 0.733333, 0.0509804, 1 ),
-"red": Color( 0.960784, 0.137255, 0, 1 ),
-"white": Color( 1, 1, 1, 1 )
-}
 
 [node name="Right" parent="MachineBody" instance=ExtResource( 2 )]
 margin_left = 138.0
 margin_top = 27.0
 margin_right = 650.0
 margin_bottom = 539.0
-colors = {
-"blue": Color( 0, 0.611765, 0.960784, 1 ),
-"green": Color( 0.611765, 0.960784, 0, 1 ),
-"orange": Color( 0.984314, 0.733333, 0.0509804, 1 ),
-"red": Color( 0.960784, 0.137255, 0, 1 ),
-"white": Color( 1, 1, 1, 1 )
-}
 
 [node name="Up" parent="MachineBody" instance=ExtResource( 2 )]
 margin_left = 24.0
@@ -60,13 +46,6 @@ margin_top = -88.0
 margin_right = 536.0
 margin_bottom = 424.0
 rect_rotation = -90.0
-colors = {
-"blue": Color( 0, 0.611765, 0.960784, 1 ),
-"green": Color( 0.611765, 0.960784, 0, 1 ),
-"orange": Color( 0.984314, 0.733333, 0.0509804, 1 ),
-"red": Color( 0.960784, 0.137255, 0, 1 ),
-"white": Color( 1, 1, 1, 1 )
-}
 
 [connection signal="radial_showing" from="MachineBody/Down" to="MachineBody/Left" method="_on_Down_radial_showing"]
 [connection signal="radial_showing" from="MachineBody/Down" to="MachineBody/Right" method="_on_Down_radial_showing"]

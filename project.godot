@@ -42,6 +42,10 @@ config/name="Computational Game"
 run/main_scene="res://scenes/MainMenu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+SceneSkript="*res://scenes/SceneSkript.gd"
+
 [display]
 
 window/size/width=1920
