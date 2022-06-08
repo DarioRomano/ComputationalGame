@@ -32,13 +32,13 @@ func calculate_direction(c):
 	var right=c.get_node("Right")
 	var up=c.get_node("Up")
 	print("color is ",color)
-	if((left.current_color==color and !left.negated) or (left.current_color!=color and left.negated)):
+	if((left.current_color.is_equal_approx(color) and !left.negated) or (not left.current_color.is_equal_approx(color) and left.negated)):
 		return Vector2.LEFT
-	elif((down.current_color==color and !down.negated) or (down.current_color!=color and down.negated)):
+	elif((down.current_color.is_equal_approx(color) and !down.negated) or (not down.current_color.is_equal_approx(color) and down.negated)):
 		return Vector2.DOWN
-	elif((right.current_color==color and !right.negated) or (right.current_color!=color and right.negated)):
+	elif((right.current_color.is_equal_approx(color) and !right.negated) or (not right.current_color.is_equal_approx(color) and right.negated)):
 		return Vector2.RIGHT
-	elif((up.current_color==color and !up.negated) or (up.current_color!=color and up.negated)):
+	elif((up.current_color.is_equal_approx(color) and !up.negated) or (not up.current_color.is_equal_approx(color) and up.negated)):
 		return Vector2.UP
 
 func set_speed():

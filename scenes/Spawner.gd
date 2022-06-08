@@ -4,8 +4,11 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-export var colors= {"white":Color("#FFFFFF"),"red":Color("#F52300"),"blue":Color("#009CF5"),"orange":Color("#FBBB0D"),"green":Color("#9CF500")}
+#export var colors= {"white":Color("#FFFFFF"),"red":Color("#F52300"),"blue":Color("#009CF5"),"orange":Color("#FBBB0D"),"green":Color("#9CF500")}
 var Crate = load("res://components/crate/crate.tscn")
+
+#var smeg = preload("res://scenes/SceneSkript.gd")
+var colors = SceneSkript.colors
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,7 +18,7 @@ func _unhandled_input(ev): #inherited from control
 	if ev is InputEventKey:
 		if ev.pressed and ev.scancode == KEY_S:
 			var crate_instance = Crate.instance()
-			crate_instance.position = position - Vector2(0,0)
+			crate_instance.position = Vector2(0,0)
 			var rnd_num = randi() % 4
 			if rnd_num == 0:
 				crate_instance.modulate= colors.white
