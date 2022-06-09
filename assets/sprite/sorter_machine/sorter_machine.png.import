@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CliffTileset.png-1065115ec5b331024863a39ea16cf86d.stex"
+path="res://.import/sorter_machine.png-676917a498c5e236e3cefc4a38aa7e88.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprite/ground/CliffTileset.png"
-dest_files=[ "res://.import/CliffTileset.png-1065115ec5b331024863a39ea16cf86d.stex" ]
+source_file="res://assets/sprite/sorter_machine/sorter_machine.png"
+dest_files=[ "res://.import/sorter_machine.png-676917a498c5e236e3cefc4a38aa7e88.stex" ]
 
 [params]
 

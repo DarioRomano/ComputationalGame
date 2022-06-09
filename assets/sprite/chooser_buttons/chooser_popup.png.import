@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CliffTileset.png-1065115ec5b331024863a39ea16cf86d.stex"
+path="res://.import/chooser_popup.png-125d3a2760646ea0951b0efc109d07c4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprite/ground/CliffTileset.png"
-dest_files=[ "res://.import/CliffTileset.png-1065115ec5b331024863a39ea16cf86d.stex" ]
+source_file="res://assets/sprite/chooser_buttons/chooser_popup.png"
+dest_files=[ "res://.import/chooser_popup.png-125d3a2760646ea0951b0efc109d07c4.stex" ]
 
 [params]
 

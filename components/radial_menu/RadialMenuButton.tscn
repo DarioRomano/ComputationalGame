@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/icons/colors/white_circlex512.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprite/chooser_buttons/chooser_popup.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprite/chooser_buttons/chooser_button.png" type="Texture" id=2]
 [ext_resource path="res://components/radial_menu/CooldownButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/radial_menu/RadialMenuButton.gd" type="Script" id=11]
 
@@ -11,17 +12,13 @@ action = "ui_focus_next"
 shortcut = SubResource( 1 )
 
 [node name="RadialMenuButton" type="TextureButton"]
-margin_left = 591.0
-margin_top = 141.0
-margin_right = 1103.0
-margin_bottom = 653.0
+margin_right = 32.0
+margin_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-rect_scale = Vector2( 0.25, 0.25 )
-rect_pivot_offset = Vector2( 256, 256 )
 shortcut_in_tooltip = false
 shortcut = SubResource( 2 )
-texture_normal = ExtResource( 1 )
+texture_normal = ExtResource( 2 )
 script = ExtResource( 11 )
 
 [node name="Buttons" type="Control" parent="."]
