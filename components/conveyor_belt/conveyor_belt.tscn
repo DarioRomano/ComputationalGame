@@ -18,9 +18,10 @@
 0/shapes = [  ]
 0/z_index = 0
 
-[node name="Node2D" type="Node2D"]
+[node name="conveyor_belts" type="Node2D"]
 
-[node name="conveyor_belts" type="TileMap" parent="."]
+[node name="belt_tilemap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
+tile_data = PoolIntArray( 65538, 536870912, 0, 65540, 1610612736, 0, 131074, 536870912, 0, 131076, 1610612736, 0, 196610, 536870912, 0, 196612, 1610612736, 0, 262146, 536870912, 0, 262148, 1610612736, 0, 327682, 536870912, 0, 327684, 1610612736, 0, 393218, 536870912, 0, 393220, 1610612736, 0, 458754, 536870912, 0, 458756, 1610612736, 0 )
