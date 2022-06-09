@@ -8,8 +8,8 @@ export var current_color = Color("#FFFFFF")
 
 signal radial_showing
 
-var base_scale=Vector2(4,4)
-var icon_factor=.25
+var base_scale=Vector2(1,1)
+var icon_factor=1
 var num
 var active = false
 var holding=false

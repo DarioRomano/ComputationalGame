@@ -18,13 +18,14 @@ margin_right = 82.0
 margin_bottom = 82.0
 grow_horizontal = 2
 grow_vertical = 2
-rect_pivot_offset = Vector2( 16, 0 )
+rect_pivot_offset = Vector2( 16, 16 )
 shortcut_in_tooltip = false
 shortcut = SubResource( 2 )
 script = ExtResource( 11 )
 
 [node name="MainButton" type="Sprite" parent="."]
 position = Vector2( 16, 16 )
+z_index = 1
 texture = ExtResource( 2 )
 
 [node name="Buttons" type="Control" parent="."]
