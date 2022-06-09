@@ -22,8 +22,6 @@ func _physics_process(delta):
 	var collision = move_and_collide(movement)
 	if collision != null and collision.collider.name=="MachineBody":
 		direction=calculate_direction(collision.collider)
-	if collision != null and collision.collider.name=="GoalBody":
-		queue_free()
 
 func calculate_direction(c):
 	var color=get_parent().modulate
@@ -31,7 +29,7 @@ func calculate_direction(c):
 	var down=c.get_node("Down")
 	var right=c.get_node("Right")
 	var up=c.get_node("Up")
-	print("color is ",color)
+	#print("color is ",color)
 	if((left.current_color.is_equal_approx(color) and !left.negated) or (not left.current_color.is_equal_approx(color) and left.negated)):
 		return Vector2.LEFT
 	elif((down.current_color.is_equal_approx(color) and !down.negated) or (not down.current_color.is_equal_approx(color) and down.negated)):
@@ -41,5 +39,5 @@ func calculate_direction(c):
 	elif((up.current_color.is_equal_approx(color) and !up.negated) or (not up.current_color.is_equal_approx(color) and up.negated)):
 		return Vector2.UP
 
-func set_speed():
-	speed = 200
+func delete_crate():
+	queue_free()

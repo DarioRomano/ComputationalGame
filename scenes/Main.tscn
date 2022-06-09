@@ -6,15 +6,15 @@
 [ext_resource path="res://components/crate/crate.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Spawner.gd" type="Script" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
-[ext_resource path="res://components/conveyor_belt/conveyor_belt.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/GoalBody.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 [node name="Node2D2" type="Node2D"]
 
 [node name="color_sorter" parent="." instance=ExtResource( 2 )]
-position = Vector2( -170, -19 )
-z_index = 1
+
+[node name="MachineBody" parent="color_sorter" index="0" groups=["color_sorter"]]
 
 [node name="RedCrate" parent="." instance=ExtResource( 4 )]
 modulate = Color( 0.960784, 0.137255, 0, 1 )
@@ -26,7 +26,7 @@ position = Vector2( 210, -1120 )
 z_index = -2
 
 [node name="Spawner" type="Node2D" parent="."]
-position = Vector2( 250, -200 )
+position = Vector2( 0, -200 )
 script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="Spawner"]
@@ -38,7 +38,8 @@ position = Vector2( 0, 600 )
 [node name="Sprite" type="Sprite" parent="Goal"]
 texture = ExtResource( 6 )
 
-[node name="GoalBody" type="StaticBody2D" parent="Goal"]
+[node name="GoalBody" type="Area2D" parent="Goal"]
+script = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Goal/GoalBody"]
 shape = SubResource( 1 )
@@ -56,4 +57,11 @@ margin_top = 2.0
 margin_right = 3.0
 margin_bottom = 193.0
 
-[node name="conveyor_belts" parent="." instance=ExtResource( 7 )]
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="body_entered" from="Goal/GoalBody" to="Goal/GoalBody" method="_on_GoalBody_body_entered"]
+
+[editable path="color_sorter"]
+[editable path="Crate"]
