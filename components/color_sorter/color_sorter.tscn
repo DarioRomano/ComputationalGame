@@ -5,9 +5,10 @@
 [ext_resource path="res://components/color_sorter/MachineBody.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 80, 80 )
+extents = Vector2( 132, 107 )
 
 [node name="color_sorter" type="Node2D"]
+scale = Vector2( 5, 5 )
 
 [node name="MachineBody" type="Area2D" parent="."]
 script = ExtResource( 3 )
@@ -46,6 +47,7 @@ margin_top = -88.0
 margin_right = 536.0
 margin_bottom = 424.0
 rect_rotation = -90.0
+
 [node name="SpUp" type="Node2D" parent="MachineBody"]
 position = Vector2( 340, 140 )
 
