@@ -1,12 +1,10 @@
-extends Node2D
+extends Area2D
 
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var colors= {"white":Color("#FFFFFF"),"red":Color("#F52300"),"blue":Color("#009CF5"),"orange":Color("#FBBB0D"),"green":Color("#9CF500")}
 
-var boxes = 15
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,3 +14,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func _on_GoalBody_body_entered(body):
+	body.delete_crate()
