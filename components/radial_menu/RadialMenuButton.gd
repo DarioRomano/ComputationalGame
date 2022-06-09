@@ -1,6 +1,6 @@
 extends TextureButton
 
-export var radius = 900
+export var radius = 80
 export var speed = 0.25
 export var negated=false
 #export var colors= {"white":Color("#FFFFFF"),"red":Color("#F52300"),"blue":Color("#009CF5"),"orange":Color("#FBBB0D"),"green":Color("#9CF500")}
@@ -8,14 +8,15 @@ export var current_color = Color("#FFFFFF")
 
 signal radial_showing
 
-var base_scale=Vector2(0.25,0.25)
+var base_scale=Vector2(4,4)
+var icon_factor=.25
 var num
 var active = false
 var holding=false
 var expanded=false
 
-var _normal_texture=load("res://assets/icons/colors/white_circlex512.png")
-var _crossed_texture=load("res://assets/icons/colors/white_circle_crossedx512.png")
+var _normal_texture=load("res://assets/sprite/chooser_buttons/chooser_button.png")
+var _crossed_texture=load("res://assets/sprite/chooser_buttons/chooser_button_neg.png")
 
 func _ready():
 	current_color=SceneSkript.colors.white
@@ -32,7 +33,7 @@ func _ready():
 			1:c=SceneSkript.colors.red
 			2:c=SceneSkript.colors.blue
 			3:c=SceneSkript.colors.green
-		b.self_modulate=c
+		b.get_node("Sprite").self_modulate=c
 		count=count+1
 	connect("button_up", self, "_on_StartButton_released")
 	connect("button_down", self,"_onStartButton_pushed")
@@ -40,23 +41,23 @@ func _ready():
 func add_wobble_animation():
 	var animation = Animation.new()
 	var track_index = animation.add_track(Animation.TYPE_VALUE)
-	animation.track_set_path(track_index, ".:rect_scale")
-	animation.track_insert_key(track_index, 0, base_scale)
-	animation.track_insert_key(track_index, 0.2,base_scale*1.2)
-	animation.track_insert_key(track_index, 0.45,base_scale*.85)
-	animation.track_insert_key(track_index, 0.5, base_scale)
+	animation.track_set_path(track_index, "./MainButton:scale")
+	animation.track_insert_key(track_index, 0, base_scale*icon_factor)
+	animation.track_insert_key(track_index, 0.2,base_scale*1.2*icon_factor)
+	animation.track_insert_key(track_index, 0.45,base_scale*.85*icon_factor)
+	animation.track_insert_key(track_index, 0.5, base_scale*icon_factor)
 	$AnimationPlayer.add_animation("Wobble",animation)
-	print(self.rect_scale)
 
 func add_animation(button):
-	$Tween.interpolate_property(self,"self_modulate",self.self_modulate,button.self_modulate,0.2,Tween.TRANS_LINEAR, Tween.EASE_IN)
+	var sprite=self.get_node("./MainButton")
+	var target=button.get_node("Sprite").self_modulate
+	$Tween.interpolate_property(sprite,"self_modulate",sprite.self_modulate,target,0.2,Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.start()
 	$AnimationPlayer.play("Wobble")
-	current_color=button.self_modulate
+	current_color=target
 
 func show_menu():
 	emit_signal("radial_showing",self)
-	print("showing")
 	$Buttons.show()
 	#var spacing = TAU / num
 	var spacing = PI / (num-1)
@@ -72,7 +73,6 @@ func show_menu():
 
 
 func hide_menu(wobble):
-	print("hiding")
 	if expanded:
 		for b in $Buttons.get_children():
 			$Tween.interpolate_property(b, "rect_position", b.rect_position,
@@ -87,8 +87,6 @@ func hide_menu(wobble):
 
 func _on_StartButton_released():
 	$HoldTimer.stop()
-	print("release")
-	print(self.rect_scale)
 	if not holding:
 		disabled = true
 		if active:
@@ -98,7 +96,6 @@ func _on_StartButton_released():
 	holding=false
 
 func _onStartButton_pushed():
-	print("push")
 	$HoldTimer.start(.5)
 
 func _on_Tween_tween_all_completed():
@@ -108,7 +105,6 @@ func _on_Tween_tween_all_completed():
 		$Buttons.hide()
 
 func _on_HoldTimer_timeout():
-	print("hold")
 	$HoldTimer.stop()
 	holding=true	
 	$AnimationPlayer.play("Wobble")
@@ -121,9 +117,9 @@ func _on_HoldTimer_timeout():
 
 func change_crosslines(visible):
 	if visible:
-		self.texture_normal=_crossed_texture
+		$MainButton.texture=_crossed_texture
 	else:
-		self.texture_normal=_normal_texture
+		$MainButton.texture=_normal_texture
 
 
 func _on_Down_radial_showing(s):

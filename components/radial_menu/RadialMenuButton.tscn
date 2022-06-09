@@ -12,52 +12,64 @@ action = "ui_focus_next"
 shortcut = SubResource( 1 )
 
 [node name="RadialMenuButton" type="TextureButton"]
-margin_right = 32.0
-margin_bottom = 32.0
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 82.0
+margin_bottom = 82.0
 grow_horizontal = 2
 grow_vertical = 2
+rect_pivot_offset = Vector2( 16, 0 )
 shortcut_in_tooltip = false
 shortcut = SubResource( 2 )
-texture_normal = ExtResource( 2 )
 script = ExtResource( 11 )
+
+[node name="MainButton" type="Sprite" parent="."]
+position = Vector2( 16, 16 )
+texture = ExtResource( 2 )
 
 [node name="Buttons" type="Control" parent="."]
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorButton1" parent="Buttons" instance=ExtResource( 5 )]
-margin_left = -4.0
-margin_top = 4.0
-margin_right = 508.0
-margin_bottom = 516.0
-rect_pivot_offset = Vector2( 256, 256 )
-texture_normal = ExtResource( 1 )
+margin_right = 32.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 16, 16 )
+texture_normal = null
+
+[node name="Sprite" type="Sprite" parent="Buttons/ColorButton1"]
+texture = ExtResource( 1 )
+centered = false
 
 [node name="ColorButton2" parent="Buttons" instance=ExtResource( 5 )]
-margin_left = 4.0
-margin_top = 10.0
-margin_right = 516.0
-margin_bottom = 522.0
-rect_pivot_offset = Vector2( 256, 256 )
-texture_normal = ExtResource( 1 )
+margin_right = 32.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 16, 16 )
+texture_normal = null
 
-[node name="Colorbutton3" parent="Buttons" instance=ExtResource( 5 )]
-margin_left = -2.0
-margin_top = 10.0
-margin_right = 510.0
-margin_bottom = 522.0
-rect_pivot_offset = Vector2( 256, 256 )
-texture_normal = ExtResource( 1 )
+[node name="Sprite" type="Sprite" parent="Buttons/ColorButton2"]
+texture = ExtResource( 1 )
+centered = false
 
-[node name="Colorbutton4" parent="Buttons" instance=ExtResource( 5 )]
-margin_left = -8.0
-margin_top = 4.0
-margin_right = 504.0
-margin_bottom = 516.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_pivot_offset = Vector2( 256, 256 )
-texture_normal = ExtResource( 1 )
+[node name="ColorButton3" parent="Buttons" instance=ExtResource( 5 )]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 16, 16 )
+texture_normal = null
+
+[node name="Sprite" type="Sprite" parent="Buttons/ColorButton3"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="ColorButton4" parent="Buttons" instance=ExtResource( 5 )]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 16, 16 )
+texture_normal = null
+
+[node name="Sprite" type="Sprite" parent="Buttons/ColorButton4"]
+texture = ExtResource( 1 )
+centered = false
 
 [node name="Tween" type="Tween" parent="."]
 
