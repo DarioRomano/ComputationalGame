@@ -5,6 +5,8 @@ extends Node2D
 # var a = 2
 # var b = "text"
 #export var colors= {"white":Color("#FFFFFF"),"red":Color("#F52300"),"blue":Color("#009CF5"),"orange":Color("#FBBB0D"),"green":Color("#9CF500")}
+export var speed= 60
+
 var Crate = load("res://components/crate/crate.tscn")
 
 #var smeg = preload("res://scenes/SceneSkript.gd")
@@ -35,7 +37,7 @@ func creat_box():
 		crate_instance.modulate= colors.red
 	elif rnd_num == 3:
 		crate_instance.modulate= colors.green
-	crate_instance.get_child(0).speed= 200
+	crate_instance.get_child(0).speed= speed
 	add_child(crate_instance)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

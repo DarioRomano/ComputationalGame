@@ -1,5 +1,5 @@
 extends Node2D
-
+export var speed=60
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -15,7 +15,7 @@ func spawncrate(direct, color):
 	crate_instance.position = Vector2(0,0)
 	crate_instance.get_child(0).direction = direct
 	crate_instance.modulate= color
-	crate_instance.get_child(0).speed= 200
+	crate_instance.get_child(0).speed= speed
 	add_child(crate_instance)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
