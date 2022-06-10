@@ -4,7 +4,6 @@ export var speed=60
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var speed = 60
 var Crate = load("res://components/crate/crate.tscn")
 
 # Called when the node enters the scene tree for the first time.

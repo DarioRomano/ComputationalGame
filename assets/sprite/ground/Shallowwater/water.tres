@@ -4,6 +4,7 @@
 [ext_resource path="res://assets/sprite/ground/Shallowwater/watertileset2.png" type="Texture" id=5]
 
 [resource]
+flags = 4
 frames = 2
 fps = 2.0
 frame_0/texture = ExtResource( 3 )
