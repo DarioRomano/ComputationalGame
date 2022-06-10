@@ -77,11 +77,11 @@ margin_right = 233.0
 margin_bottom = 31.0
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="PanelContainer/ButtonAndText/Menubuttons/HBoxContainer"]
+[node name="Start Button" type="Button" parent="PanelContainer/ButtonAndText/Menubuttons/HBoxContainer"]
 margin_right = 100.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
-text = "I am a button"
+text = "Start Run"
 
 [node name="VSeparator" type="VSeparator" parent="PanelContainer/ButtonAndText/Menubuttons/HBoxContainer"]
 margin_left = 104.0
@@ -104,11 +104,11 @@ margin_right = 233.0
 margin_bottom = 67.0
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="PanelContainer/ButtonAndText/Menubuttons/HBoxContainer2"]
+[node name="Main Menu" type="Button" parent="PanelContainer/ButtonAndText/Menubuttons/HBoxContainer2"]
 margin_right = 100.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
-text = "I am a button"
+text = "Main Menu"
 
 [node name="VSeparator" type="VSeparator" parent="PanelContainer/ButtonAndText/Menubuttons/HBoxContainer2"]
 margin_left = 104.0
@@ -192,4 +192,5 @@ text = "HideMenu"
 anims/MenuSlideOut = ExtResource( 2 )
 "anims/Slide In" = SubResource( 1 )
 
+[connection signal="button_up" from="PanelContainer/ButtonAndText/Menubuttons/HBoxContainer2/Main Menu" to="." method="_on_Main_Menu_button_up"]
 [connection signal="button_up" from="PanelContainer/ButtonAndText/HideMenu" to="." method="_on_HideMenu_button_up"]

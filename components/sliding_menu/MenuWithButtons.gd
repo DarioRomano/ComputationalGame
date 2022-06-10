@@ -42,3 +42,9 @@ func _process(delta): #inherited from node
 		else:
 			$MwBAnimator.play("MenuSlideOut")
 			IsMenuShown = false
+
+func _on_Start_Button_button_up():
+	get_parent().get_parent().get_node("SpawnTimer").start(2)
+
+func _on_Main_Menu_button_up():
+	get_tree().change_scene("res://scenes/MainMenu.tscn")

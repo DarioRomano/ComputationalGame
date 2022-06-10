@@ -10,7 +10,8 @@ export var infinite_spawning=false
 export var direction=Vector2.DOWN
 
 var Crate = load("res://components/crate/crate.tscn")
-
+var speed = 60
+var n = 0
 #var smeg = preload("res://scenes/SceneSkript.gd")
 var colors = SceneSkript.colors
 
@@ -23,30 +24,36 @@ func _ready():
 	for n in SceneSkript.boxes:
 		creat_box()
 		yield(get_tree().create_timer(2.0), "timeout")
-		
 
-func _unhandled_input(ev): #inherited from control
-	if ev is InputEventKey:
-		if ev.pressed and ev.scancode == KEY_S:
-			creat_box()
+#func _unhandled_input(ev): #inherited from control
+#	if ev is InputEventKey:
+#		if ev.pressed and ev.scancode == KEY_S:
+#			creat_box()
 
-func creat_box():
+func creat_box(n):
 	var crate_instance = Crate.instance()
 	crate_instance.position = Vector2(0,0)
 	crate_instance.get_node("RigidBody2D").direction=direction
 	crate_instance.scale=self.scale
-	var rnd_num = randi() % 4
-	if rnd_num == 0:
-		crate_instance.modulate= colors.white
-	elif rnd_num == 1:
-		crate_instance.modulate= colors.blue
-	elif rnd_num == 2:
-		crate_instance.modulate= colors.red
-	elif rnd_num == 3:
-		crate_instance.modulate= colors.green
+#	randomize()
+#	var rnd_num = randi() % 4
+#	if rnd_num == 0:
+#		crate_instance.modulate= colors.white
+#	elif rnd_num == 1:
+#		crate_instance.modulate= colors.blue
+#	elif rnd_num == 2:
+#		crate_instance.modulate= colors.red
+#	elif rnd_num == 3:
+#		crate_instance.modulate= colors.green
+	crate_instance.modulate= SceneSkript.spawnList[n]
 	crate_instance.get_child(0).speed= speed
 	add_child(crate_instance)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func _on_SpawnTimer_timeout():
+	if n < SceneSkript.spawnList.size():
+		creat_box(n)
+		n+= 1
