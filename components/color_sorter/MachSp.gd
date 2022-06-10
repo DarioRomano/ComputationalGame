@@ -12,11 +12,11 @@ func _ready():
 
 func spawncrate(direct, color):
 	var crate_instance = Crate.instance()
-	crate_instance.position = Vector2(0,0)
+	crate_instance.position = position
 	crate_instance.get_child(0).direction = direct
 	crate_instance.modulate= color
 	crate_instance.get_child(0).speed= speed
-	add_child(crate_instance)
+	get_parent().add_child(crate_instance)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
