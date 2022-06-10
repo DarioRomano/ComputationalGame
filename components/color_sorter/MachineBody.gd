@@ -16,10 +16,14 @@ func _ready():
 #	pass
 
 func _on_MachineBody_body_entered(body):
-	print("Body Now")
-	var box = body.get_parent().modulate
-	boxList.append(box)
-	body.delete_crate()
+	var is_child = false
+	for ch in get_children():
+		if body.get_parent() == ch:
+			is_child= true
+	if not is_child:
+		var box = body.get_parent().modulate
+		boxList.append(box)
+		body.delete_crate()
 	
 func _unhandled_input(ev): #inherited from control
 	if ev is InputEventKey:

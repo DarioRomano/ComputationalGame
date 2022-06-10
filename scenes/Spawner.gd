@@ -6,17 +6,17 @@ extends Node2D
 # var b = "text"
 #export var colors= {"white":Color("#FFFFFF"),"red":Color("#F52300"),"blue":Color("#009CF5"),"orange":Color("#FBBB0D"),"green":Color("#9CF500")}
 var Crate = load("res://components/crate/crate.tscn")
-
+var speed = 60
+var n = 0
 #var smeg = preload("res://scenes/SceneSkript.gd")
 var colors = SceneSkript.colors
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	yield(get_tree().create_timer(2.0), "timeout")
-	for n in SceneSkript.boxes:
-		creat_box()
-		yield(get_tree().create_timer(2.0), "timeout")
-		
+#func _ready():
+#	yield(get_tree().create_timer(2.0), "timeout")
+#	for n in SceneSkript.boxes:
+#		creat_box()
+#		yield(get_tree().create_timer(2.0), "timeout")
 
 func _unhandled_input(ev): #inherited from control
 	if ev is InputEventKey:
@@ -26,6 +26,7 @@ func _unhandled_input(ev): #inherited from control
 func creat_box():
 	var crate_instance = Crate.instance()
 	crate_instance.position = Vector2(0,0)
+	randomize()
 	var rnd_num = randi() % 4
 	if rnd_num == 0:
 		crate_instance.modulate= colors.white
@@ -35,9 +36,14 @@ func creat_box():
 		crate_instance.modulate= colors.red
 	elif rnd_num == 3:
 		crate_instance.modulate= colors.green
-	crate_instance.get_child(0).speed= 200
+	crate_instance.get_child(0).speed= speed
 	add_child(crate_instance)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func _on_SpawnTimer_timeout():
+	if n < SceneSkript.boxes:
+		creat_box()
+		n+= 1

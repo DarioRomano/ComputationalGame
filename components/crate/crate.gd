@@ -6,6 +6,7 @@ extends KinematicBody2D
 # var b = "text"
 export var direction= Vector2.DOWN
 export (int) var speed= 0
+var is_breaking = false
 # Called when the node enters the scene tree for the first time.
 #func _ready():
 #	direction=Vector2.DOWN
@@ -13,15 +14,18 @@ export (int) var speed= 0
 	
 func _physics_process(delta):
 	var movement= direction * speed * delta
-	move_and_collide(movement)
+	var collide = move_and_collide(movement)
+	if (collide != null) and not is_breaking:
+		break_creat()
 
 func delete_crate():
 	queue_free()
 
 func break_creat():
+	is_breaking = true
 	speed= 0
 	$AnimatedSprite.play("break")
-	connect("animation_finished", self, "break_finisched")
+	get_node("AnimatedSprite").connect("animation_finished", self, "break_finisched")
 	
 func break_finisched():
 	delete_crate()

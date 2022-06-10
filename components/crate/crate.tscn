@@ -3,6 +3,18 @@
 [ext_resource path="res://assets/sprite/objects-dotless.png" type="Texture" id=1]
 [ext_resource path="res://components/crate/crate.gd" type="Script" id=2]
 
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 128, 64, 64 )
+
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 192, 64, 64 )
@@ -31,29 +43,17 @@ region = Rect2( 320, 192, 64, 64 )
 atlas = ExtResource( 1 )
 region = Rect2( 384, 192, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 128, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 1 )
-region = Rect2( 64, 128, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 1 )
-region = Rect2( 128, 128, 64, 64 )
-
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
-"loop": true,
-"name": "break",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
 "name": "run",
 "speed": 7.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"loop": true,
+"name": "break",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=8]
@@ -66,11 +66,11 @@ position = Vector2( 500, 0 )
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="RigidBody2D"]
-scale = Vector2( 5, 5 )
 frames = SubResource( 4 )
+animation = "run"
 playing = true
+offset = Vector2( -2, -3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2( 12.8, 16.2 )
-scale = Vector2( 5, 5 )
+position = Vector2( 1.23978e-05, 0 )
 shape = SubResource( 8 )

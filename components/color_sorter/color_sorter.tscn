@@ -6,7 +6,7 @@
 [ext_resource path="res://components/color_sorter/MachSp.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 70, 70 )
+extents = Vector2( 42, 42 )
 
 [node name="color_sorter" type="Node2D"]
 
@@ -56,19 +56,19 @@ rect_rotation = -90.0
 rotation = 1.5708
 
 [node name="SpUp" type="Node2D" parent="MachineBody"]
-position = Vector2( 340, 140 )
+position = Vector2( 32, -48 )
 script = ExtResource( 4 )
 
 [node name="SpDown" type="Node2D" parent="MachineBody"]
-position = Vector2( 220, 420 )
+position = Vector2( -32, 48 )
 script = ExtResource( 4 )
 
 [node name="SpRight" type="Node2D" parent="MachineBody"]
-position = Vector2( 420, 340 )
+position = Vector2( 48, 32 )
 script = ExtResource( 4 )
 
 [node name="SpLeft" type="Node2D" parent="MachineBody"]
-position = Vector2( 140, 220 )
+position = Vector2( -48, -32 )
 script = ExtResource( 4 )
 
 [connection signal="body_entered" from="MachineBody" to="MachineBody" method="_on_MachineBody_body_entered"]
