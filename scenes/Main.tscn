@@ -27,9 +27,6 @@ z_index = -2
 position = Vector2( 210, -1120 )
 z_index = -2
 
-[node name="AnimatedSprite" parent="Crate/RigidBody2D" index="0"]
-frame = 1
-
 [node name="Spawner" type="Node2D" parent="."]
 position = Vector2( 80, 32 )
 script = ExtResource( 5 )
@@ -38,7 +35,7 @@ script = ExtResource( 5 )
 texture = ExtResource( 6 )
 
 [node name="Goal" type="Node2D" parent="."]
-position = Vector2( 0, 600 )
+position = Vector2( 144, 32 )
 
 [node name="Sprite" type="Sprite" parent="Goal"]
 texture = ExtResource( 6 )
@@ -63,12 +60,12 @@ current = true
 script = ExtResource( 3 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
-autostart = true
 
 [node name="conveyor_belts2" parent="." instance=ExtResource( 8 )]
 z_index = -1
 
 [connection signal="body_entered" from="Goal/GoalBody" to="Goal/GoalBody" method="_on_GoalBody_body_entered"]
+[connection signal="button_up" from="CanvasLayer/MenuWithButtons/PanelContainer/ButtonAndText/Menubuttons/HBoxContainer/Start Button" to="CanvasLayer/MenuWithButtons" method="_on_Start_Button_button_up"]
 [connection signal="timeout" from="SpawnTimer" to="color_sorter/MachineBody" method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="SpawnTimer" to="Spawner" method="_on_SpawnTimer_timeout"]
 
@@ -77,3 +74,4 @@ z_index = -1
 [editable path="color_sorter/MachineBody/Left"]
 [editable path="color_sorter/MachineBody/Up"]
 [editable path="Crate"]
+[editable path="CanvasLayer/MenuWithButtons"]

@@ -5,7 +5,8 @@ extends Node2D
 # var a = 2
 # var b = "text"
 var colors= {"white":Color("#FFFFFF"),"red":Color("#F52300"),"blue":Color("#009CF5"),"orange":Color("#FBBB0D"),"green":Color("#9CF500")}
-var boxes = 50
+var boxes = 15
+var spawnList= [colors.white, colors.red, colors.green, colors.blue, colors.white, colors.red, colors.green, colors.blue,colors.white, colors.red, colors.green, colors.blue,colors.white, colors.red, colors.green, colors.blue]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
