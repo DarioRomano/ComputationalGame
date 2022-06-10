@@ -5,6 +5,10 @@ extends Node2D
 # var a = 2
 # var b = "text"
 #export var colors= {"white":Color("#FFFFFF"),"red":Color("#F52300"),"blue":Color("#009CF5"),"orange":Color("#FBBB0D"),"green":Color("#9CF500")}
+export var speed= 60
+export var infinite_spawning=false
+export var direction=Vector2.DOWN
+
 var Crate = load("res://components/crate/crate.tscn")
 var speed = 60
 var n = 0
@@ -12,11 +16,14 @@ var n = 0
 var colors = SceneSkript.colors
 
 # Called when the node enters the scene tree for the first time.
-#func _ready():
-#	yield(get_tree().create_timer(2.0), "timeout")
-#	for n in SceneSkript.boxes:
-#		creat_box()
-#		yield(get_tree().create_timer(2.0), "timeout")
+func _ready():
+	yield(get_tree().create_timer(2.0), "timeout")
+	while infinite_spawning:
+		creat_box()
+		yield(get_tree().create_timer(2.0), "timeout")
+	for n in SceneSkript.boxes:
+		creat_box()
+		yield(get_tree().create_timer(2.0), "timeout")
 
 #func _unhandled_input(ev): #inherited from control
 #	if ev is InputEventKey:
@@ -26,6 +33,8 @@ var colors = SceneSkript.colors
 func creat_box(n):
 	var crate_instance = Crate.instance()
 	crate_instance.position = Vector2(0,0)
+	crate_instance.get_node("RigidBody2D").direction=direction
+	crate_instance.scale=self.scale
 #	randomize()
 #	var rnd_num = randi() % 4
 #	if rnd_num == 0:
