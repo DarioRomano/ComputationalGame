@@ -66,9 +66,6 @@ script = ExtResource( 3 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
 
-[node name="conveyor_belts2" parent="." instance=ExtResource( 8 )]
-z_index = -1
-
 [node name="conveyor_belts" parent="." instance=ExtResource( 8 )]
 z_index = -1
 

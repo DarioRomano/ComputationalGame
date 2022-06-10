@@ -38,13 +38,16 @@ func _on_SpawnTimer_timeout():
 	var right=get_node("Right")
 	var up=get_node("Up")
 	if not boxList.empty():
-		if ((left.current_color.is_equal_approx(boxList[0]) and not left.negated) or (not left.current_color.is_equal_approx(boxList[0]) and left.negated)):
+		if should_I_go_in(left):
 			get_node("SpLeft").spawncrate(Vector2.LEFT, boxList[0])
-		elif((down.current_color.is_equal_approx(boxList[0]) and not down.negated) or (not down.current_color.is_equal_approx(boxList[0]) and down.negated)):
+		elif should_I_go_in(down):
 			get_node("SpDown").spawncrate(Vector2.DOWN, boxList[0])
-		elif((right.current_color.is_equal_approx(boxList[0]) and not right.negated) or (not right.current_color.is_equal_approx(boxList[0]) and right.negated)):
+		elif should_I_go_in(right):
 			get_node("SpRight").spawncrate(Vector2.RIGHT, boxList[0])
-		elif((up.current_color.is_equal_approx(boxList[0]) and not up.negated) or (not up.current_color.is_equal_approx(boxList[0]) and up.negated)):
+		elif should_I_go_in(up):
 			get_node("SpUp").spawncrate(Vector2.UP, boxList[0])
 		
 		boxList.remove(0)
+		
+func should_I_go_in(dir):
+	return (((dir.current_color.is_equal_approx(boxList[0]) or dir.current_color.is_equal_approx(SceneSkript.colors.white)) and not dir.negated) or (not (dir.current_color.is_equal_approx(boxList[0]) or dir.current_color.is_equal_approx(SceneSkript.colors.white)) and dir.negated))
