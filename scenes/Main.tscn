@@ -29,6 +29,9 @@ z_index = -2
 position = Vector2( 210, -1120 )
 z_index = -2
 
+[node name="AnimatedSprite" parent="Crate/RigidBody2D" index="0"]
+frame = 1
+
 [node name="Spawner" type="Node2D" parent="."]
 position = Vector2( 80, 32 )
 script = ExtResource( 5 )
@@ -62,9 +65,6 @@ current = true
 script = ExtResource( 3 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
-
-[node name="conveyor_belts2" parent="." instance=ExtResource( 8 )]
-z_index = -1
 
 [node name="conveyor_belts" parent="." instance=ExtResource( 8 )]
 z_index = -1

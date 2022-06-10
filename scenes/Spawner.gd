@@ -16,13 +16,15 @@ var colors = SceneSkript.colors
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	yield(get_tree().create_timer(2.0), "timeout")
+#	yield(get_tree().create_timer(2.0), "timeout")
+	randomize()
 	while infinite_spawning:
 		creat_inf_box()
-		yield(get_tree().create_timer(2.0), "timeout")
-	for n in SceneSkript.boxes:
-		creat_box(n)
-		yield(get_tree().create_timer(2.0), "timeout")
+		var rnd_time = randf() + 1.0
+		yield(get_tree().create_timer(rnd_time), "timeout")
+#	for n in SceneSkript.boxes:
+#		creat_box(n)
+#		yield(get_tree().create_timer(2.0), "timeout")
 
 #func _unhandled_input(ev): #inherited from control
 #	if ev is InputEventKey:

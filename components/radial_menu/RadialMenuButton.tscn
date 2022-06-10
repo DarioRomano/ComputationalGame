@@ -32,6 +32,16 @@ texture = ExtResource( 2 )
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ColorButton5" parent="Buttons" instance=ExtResource( 5 )]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 16, 16 )
+texture_normal = null
+
+[node name="Sprite" type="Sprite" parent="Buttons/ColorButton5"]
+texture = ExtResource( 1 )
+centered = false
+
 [node name="ColorButton1" parent="Buttons" instance=ExtResource( 5 )]
 margin_right = 32.0
 margin_bottom = 32.0

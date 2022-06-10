@@ -33,6 +33,7 @@ func _ready():
 			1:c=SceneSkript.colors.red
 			2:c=SceneSkript.colors.blue
 			3:c=SceneSkript.colors.green
+			4:c=SceneSkript.colors.orange
 		b.get_node("Sprite").self_modulate=c
 		count=count+1
 	connect("button_up", self, "_on_StartButton_released")
