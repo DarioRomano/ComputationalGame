@@ -51,3 +51,10 @@ func _on_SpawnTimer_timeout():
 		
 func should_I_go_in(dir):
 	return (((dir.current_color.is_equal_approx(boxList[0]) or dir.current_color.is_equal_approx(SceneSkript.colors.white)) and not dir.negated) or (not (dir.current_color.is_equal_approx(boxList[0]) or dir.current_color.is_equal_approx(SceneSkript.colors.white)) and dir.negated))
+
+
+func _on_MenuWithButtons_reset_signal():
+	for ch in get_children():
+		if (ch.get_node("RigidBody2D")!= null) and ch.get_node("RigidBody2D").has_method("delete_crate"):
+			ch.get_node("RigidBody2D").delete_crate()
+	boxList.clear()

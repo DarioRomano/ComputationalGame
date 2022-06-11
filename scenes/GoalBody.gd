@@ -16,4 +16,7 @@ func _ready():
 #	pass
 
 func _on_GoalBody_body_entered(body):
-	body.delete_crate()
+	if get_parent().modulate.is_equal_approx(SceneSkript.colors.white) or get_parent().modulate.is_equal_approx(body.modulate):
+		body.delete_crate()
+	else:
+		body.break_creat()

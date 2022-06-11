@@ -75,3 +75,9 @@ func _on_SpawnTimer_timeout():
 	if n < SceneSkript.spawnList.size():
 		creat_box(n)
 		n+= 1
+
+func _on_MenuWithButtons_reset_signal():
+	for ch in get_children():
+		if (ch.get_node("RigidBody2D")!= null) and ch.get_node("RigidBody2D").has_method("delete_crate"):
+			ch.get_node("RigidBody2D").delete_crate()
+	n= 0

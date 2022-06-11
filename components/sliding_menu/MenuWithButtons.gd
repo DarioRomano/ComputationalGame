@@ -2,6 +2,7 @@ extends Control
 
 #This bool will help us track if the menu is on the players screen
 var IsMenuShown = true
+signal reset_signal
 
 func _on_HideMenu_button_up(): #Signal
 	#Also keyboard navigation by avoiding bugs
@@ -44,7 +45,14 @@ func _process(delta): #inherited from node
 			IsMenuShown = false
 
 func _on_Start_Button_button_up():
+	SceneSkript.change_allowed= false
 	get_parent().get_parent().get_node("SpawnTimer").start(2)
+
+func _on_Stop_Run_button_up():
+	SceneSkript.change_allowed= true
+	get_parent().get_parent().get_node("SpawnTimer").stop()
+	emit_signal("reset_signal")
 
 func _on_Main_Menu_button_up():
 	get_tree().change_scene("res://scenes/MainMenu.tscn")
+

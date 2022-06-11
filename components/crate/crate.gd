@@ -8,10 +8,9 @@ export var direction= Vector2.DOWN
 export (int) var speed= 0
 var is_breaking = false
 # Called when the node enters the scene tree for the first time.
-#func _ready():
-#	direction=Vector2.DOWN
-	
-	
+func _ready():
+	connect("SceneScript.change_allowed", self, "reset_box")
+
 func _physics_process(delta):
 	var movement= direction * speed * delta
 	var collide = move_and_collide(movement)
