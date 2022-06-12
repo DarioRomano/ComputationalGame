@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/sprite/color_changer/colorchanger-4way.png" type="Texture" id=1]
+[ext_resource path="res://components/color_sorter/MachSp.gd" type="Script" id=2]
+[ext_resource path="res://components/color_changer/color_changer_body.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 42, 42 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="MachineBody" type="Area2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MachineBody"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="MachineBody"]
+texture = ExtResource( 1 )
+
+[node name="SpUp" type="Node2D" parent="MachineBody"]
+position = Vector2( 32, -48 )
+script = ExtResource( 2 )
+
+[node name="SpDown" type="Node2D" parent="MachineBody"]
+position = Vector2( -32, 48 )
+script = ExtResource( 2 )
+
+[node name="SpRight" type="Node2D" parent="MachineBody"]
+position = Vector2( 48, 32 )
+script = ExtResource( 2 )
+
+[node name="SpLeft" type="Node2D" parent="MachineBody"]
+position = Vector2( -48, -32 )
+script = ExtResource( 2 )
+
+[connection signal="body_entered" from="MachineBody" to="MachineBody" method="_on_MachineBody_body_entered"]

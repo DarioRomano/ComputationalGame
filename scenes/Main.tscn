@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://components/sliding_menu/MenuWithButtons.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/color_sorter/color_sorter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/TouchCamera.gd" type="Script" id=3]
 [ext_resource path="res://components/crate/crate.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/spawner/spawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://components/color_changer/color_changer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://components/goal/Goal.tscn" type="PackedScene" id=7]
 [ext_resource path="res://components/conveyor_belt/conveyor_belt.tscn" type="PackedScene" id=8]
 [ext_resource path="res://components/background/background.tscn" type="PackedScene" id=9]
@@ -27,7 +28,7 @@ position = Vector2( 210, -1120 )
 z_index = -2
 
 [node name="AnimatedSprite" parent="Crate/RigidBody2D" index="0"]
-frame = 2
+frame = 1
 
 [node name="Goal" parent="." instance=ExtResource( 7 )]
 modulate = Color( 0.960784, 0.137255, 0, 1 )
@@ -72,10 +73,16 @@ tile_data = PoolIntArray( -1966121, -2147483645, 0, -1966120, -2147483645, 1, -1
 [node name="Spawner" parent="." instance=ExtResource( 5 )]
 position = Vector2( 80, 32 )
 
+[node name="color_changer" parent="." instance=ExtResource( 6 )]
+position = Vector2( 112, 560 )
+z_index = 1
+
 [connection signal="reset_signal" from="CanvasLayer/MenuWithButtons" to="color_sorter/MachineBody" method="_on_MenuWithButtons_reset_signal"]
 [connection signal="reset_signal" from="CanvasLayer/MenuWithButtons" to="Spawner" method="_on_MenuWithButtons_reset_signal"]
 [connection signal="timeout" from="SpawnTimer" to="color_sorter/MachineBody" method="_on_SpawnTimer_timeout"]
+[connection signal="timeout" from="SpawnTimer" to="CanvasLayer/MenuWithButtons" method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="SpawnTimer" to="Spawner" method="_on_SpawnTimer_timeout"]
+[connection signal="timeout" from="SpawnTimer" to="color_changer/MachineBody" method="_on_SpawnTimer_timeout"]
 
 [editable path="color_sorter"]
 [editable path="color_sorter/MachineBody/Down"]
@@ -86,3 +93,4 @@ position = Vector2( 80, 32 )
 [editable path="CanvasLayer/MenuWithButtons"]
 [editable path="conveyor_belts"]
 [editable path="Background"]
+[editable path="color_changer"]
