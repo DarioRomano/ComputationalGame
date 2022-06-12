@@ -38,7 +38,7 @@ func creat_inf_box():
 	crate_instance.scale=self.scale
 	var rnd_num = randi() % 4
 	if rnd_num == 0:
-		crate_instance.modulate= colors.white
+		crate_instance.modulate= colors.orange
 	elif rnd_num == 1:
 		crate_instance.modulate= colors.blue
 	elif rnd_num == 2:

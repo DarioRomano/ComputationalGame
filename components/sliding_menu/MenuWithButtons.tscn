@@ -81,7 +81,7 @@ size_flags_vertical = 3
 margin_right = 100.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
-text = "Start Run"
+text = "Start"
 
 [node name="VSeparator" type="VSeparator" parent="PanelContainer/ButtonAndText/Menubuttons/HBoxContainer"]
 margin_left = 104.0
@@ -108,7 +108,7 @@ size_flags_vertical = 3
 margin_right = 100.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
-text = "Stop Run"
+text = "Stop"
 
 [node name="VSeparator" type="VSeparator" parent="PanelContainer/ButtonAndText/Menubuttons/HBoxContainer2"]
 margin_left = 104.0
@@ -135,7 +135,7 @@ size_flags_vertical = 3
 margin_right = 100.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
-text = "Settings"
+text = "Optionen"
 
 [node name="VSeparator" type="VSeparator" parent="PanelContainer/ButtonAndText/Menubuttons/HBoxContainer3"]
 margin_left = 104.0
@@ -162,7 +162,7 @@ size_flags_vertical = 3
 margin_right = 100.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
-text = "Main Menu"
+text = "Hauptmenü"
 
 [node name="VSeparator" type="VSeparator" parent="PanelContainer/ButtonAndText/Menubuttons/HBoxContainer4"]
 margin_left = 104.0
