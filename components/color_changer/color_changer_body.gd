@@ -11,7 +11,7 @@ var boxList_right=[]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	get_tree().get_root().get_node("./Node2D2/SpawnTimer").connect("timeout", self, "_on_SpawnTimer_timeout")
 	#print("Ready done")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,7 +44,6 @@ func _unhandled_input(ev): #inherited from control
 			boxList_left.remove(0)
 			print("removed")
 
-
 func _on_SpawnTimer_timeout():
 	if not boxList_down.empty():
 		get_node("SpDown").spawncrate(Vector2.DOWN, rotate_color(boxList_down[0]))
@@ -71,7 +70,7 @@ func rotate_color(col:Color):
 
 func _on_MenuWithButtons_reset_signal():
 	for ch in get_children():
-		if (ch.get_node("RigidBody2D")!= null) and ch.get_node("RigidBody2D").has_method("delete_crate"):
+		if (ch.get_node_or_null("RigidBody2D")!= null) and ch.get_node("RigidBody2D").has_method("delete_crate"):
 			ch.get_node("RigidBody2D").delete_crate()
 	boxList_down.clear()
 	boxList_up.clear()

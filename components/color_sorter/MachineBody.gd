@@ -54,6 +54,6 @@ func should_I_go_in(dir):
 
 func _on_MenuWithButtons_reset_signal():
 	for ch in get_children():
-		if (ch.get_node("RigidBody2D")!= null) and ch.get_node("RigidBody2D").has_method("delete_crate"):
+		if (ch.get_node_or_null("RigidBody2D")!= null) and ch.get_node("RigidBody2D").has_method("delete_crate"):
 			ch.get_node("RigidBody2D").delete_crate()
 	boxList.clear()
