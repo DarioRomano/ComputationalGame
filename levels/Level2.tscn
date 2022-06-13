@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://components/sliding_menu/MenuWithButtons.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/color_sorter/color_sorter.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/TouchCamera.gd" type="Script" id=3]
+[ext_resource path="res://components/TouchCamera/TouchCamera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://components/crate/crate.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/spawner/spawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/color_changer/color_changer.tscn" type="PackedScene" id=6]
@@ -10,6 +10,8 @@
 [ext_resource path="res://components/conveyor_belt/conveyor_belt.tscn" type="PackedScene" id=8]
 [ext_resource path="res://components/background/background.tscn" type="PackedScene" id=9]
 [ext_resource path="res://components/invis_collider/StaticBody2D.tscn" type="PackedScene" id=10]
+[ext_resource path="res://components/goal/Goals.tscn" type="PackedScene" id=11]
+[ext_resource path="res://components/VictoryText/VictoryText.tscn" type="PackedScene" id=12]
 
 [node name="Node2D2" type="Node2D"]
 
@@ -31,20 +33,6 @@ z_index = -2
 [node name="AnimatedSprite" parent="Crate/RigidBody2D" index="0"]
 frame = 0
 
-[node name="Goal" parent="." instance=ExtResource( 7 )]
-position = Vector2( -112, 272 )
-rotation = -1.5708
-z_index = 1
-count = 4
-color = Color( 0, 0.611765, 0.960784, 1 )
-
-[node name="Goal2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 754, 336 )
-rotation = 1.5708
-z_index = 1
-count = 12
-color = Color( 0.960784, 0.137255, 0, 1 )
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MenuWithButtons" parent="CanvasLayer" instance=ExtResource( 1 )]
@@ -53,10 +41,15 @@ margin_top = 1.0
 margin_right = 82.0
 margin_bottom = 192.0
 
-[node name="TouchCamera" type="Camera2D" parent="."]
-offset = Vector2( 515, 300 )
-current = true
-script = ExtResource( 3 )
+[node name="AnimatedSprite" parent="CanvasLayer" instance=ExtResource( 12 )]
+position = Vector2( 960, 540 )
+scale = Vector2( 2, 2 )
+
+[node name="TouchCamera" parent="." instance=ExtResource( 3 )]
+limit_left = -10000
+limit_top = -10000
+limit_right = 10000
+limit_bottom = 10000
 
 [node name="SpawnTimer" type="Timer" parent="."]
 
@@ -117,14 +110,37 @@ position = Vector2( 582, 845 )
 [node name="StaticBody2D10" parent="colliders" instance=ExtResource( 10 )]
 position = Vector2( 462, 904 )
 
+[node name="Goals" parent="." instance=ExtResource( 11 )]
+
+[node name="Goal" parent="Goals" instance=ExtResource( 7 )]
+modulate = Color( 0, 0.611765, 0.960784, 1 )
+position = Vector2( -108, 272 )
+rotation = -1.5708
+count = 4
+
+[node name="Label" parent="Goals/Goal" index="2"]
+rect_rotation = 90.0
+
+[node name="Goal2" parent="Goals" instance=ExtResource( 7 )]
+modulate = Color( 0.960784, 0.137255, 0, 1 )
+position = Vector2( 740, 336 )
+rotation = 1.5708
+count = 12
+
+[node name="Label" parent="Goals/Goal2" index="2"]
+rect_rotation = -90.0
+
+[connection signal="reset_signal" from="CanvasLayer/MenuWithButtons" to="color_sorter/MachineBody" method="_on_MenuWithButtons_reset_signal"]
+[connection signal="reset_signal" from="CanvasLayer/MenuWithButtons" to="Spawner" method="_on_MenuWithButtons_reset_signal"]
+
 [editable path="color_sorter"]
 [editable path="color_sorter/MachineBody/Down"]
 [editable path="color_sorter/MachineBody/Left"]
 [editable path="color_sorter/MachineBody/Up"]
 [editable path="Crate"]
-[editable path="Goal"]
-[editable path="Goal2"]
 [editable path="CanvasLayer/MenuWithButtons"]
 [editable path="conveyor_belts"]
 [editable path="Background"]
 [editable path="color_changer"]
+[editable path="Goals/Goal"]
+[editable path="Goals/Goal2"]
