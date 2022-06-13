@@ -26,9 +26,6 @@ z_index = -2
 position = Vector2( 210, -1120 )
 z_index = -2
 
-[node name="AnimatedSprite" parent="Crate/RigidBody2D" index="0"]
-frame = 2
-
 [node name="Goal" parent="." instance=ExtResource( 7 )]
 modulate = Color( 0.960784, 0.137255, 0, 1 )
 position = Vector2( 144, 32 )
@@ -39,10 +36,10 @@ color = Color( 0.960784, 0.137255, 0, 1 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MenuWithButtons" parent="CanvasLayer" instance=ExtResource( 1 )]
-margin_left = -244.0
-margin_top = 2.0
-margin_right = 3.0
-margin_bottom = 193.0
+margin_left = -473.0
+margin_top = 3.0
+margin_right = 78.0
+margin_bottom = 194.0
 
 [node name="TouchCamera" type="Camera2D" parent="."]
 offset = Vector2( 515, 300 )

@@ -20,10 +20,10 @@ func _ready():
 	safed_count= count
 
 func reduce_count():
-	if not curr_count==0:
-		curr_count-=1
-		$Label.text=String(curr_count)
-		if curr_count==0:
+	if not count==0:
+		count-=1
+		$Label.text=String(count)
+		if count==0:
 			emit_signal("goal_reached")
 
 func _on_MenuWithButtons_reset_signal():
@@ -34,5 +34,5 @@ func _on_MenuWithButtons_reset_signal():
 #	pass
 
 func reset_count():
-	curr_count=initial_count
-	$Label.text=String(curr_count)
+	count=safed_count
+	$Label.text=String(count)
