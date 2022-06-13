@@ -44,6 +44,7 @@ margin_bottom = 192.0
 [node name="AnimatedSprite" parent="CanvasLayer" instance=ExtResource( 12 )]
 position = Vector2( 960, 540 )
 scale = Vector2( 2, 2 )
+frame = 1
 
 [node name="TouchCamera" parent="." instance=ExtResource( 3 )]
 limit_left = -10000

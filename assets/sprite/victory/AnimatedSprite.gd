@@ -19,4 +19,10 @@ func _ready():
 
 func _on_finished_level():
 	self.visible = true
+	yield(get_tree().create_timer(4.0), "timeout")
+	if SceneSkript.level== 1:
+		get_tree().change_scene("res://levels/Level2.tscn")
+	elif SceneSkript.level== 2:
+		get_tree().change_scene("res://scenes/MainMenu.tscn")
+
 	

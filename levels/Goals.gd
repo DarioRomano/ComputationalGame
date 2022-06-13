@@ -24,4 +24,12 @@ func goal_finished():
 	if all_finished:
 		emit_signal("victory")
 		get_node("../CanvasLayer/AnimatedSprite").visible=true
-		
+		yield(get_tree().create_timer(4.0), "timeout")
+		SceneSkript.change_allowed= true
+		if SceneSkript.level== 1:
+			SceneSkript.level= 2
+			get_tree().change_scene("res://levels/Level2.tscn")
+		elif SceneSkript.level== 2:
+			SceneSkript.level= 0
+			get_tree().change_scene("res://scenes/MainMenu.tscn")
+

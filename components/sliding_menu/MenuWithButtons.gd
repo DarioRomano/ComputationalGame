@@ -48,7 +48,7 @@ func _process(delta): #inherited from node
 
 func _on_Start_Button_button_up():
 	SceneSkript.change_allowed= false
-	get_parent().get_parent().get_node("SpawnTimer").start(2)
+	get_parent().get_parent().get_node("SpawnTimer").start(1)
 
 func _on_Stop_Run_button_up():
 	SceneSkript.change_allowed= true
@@ -56,9 +56,9 @@ func _on_Stop_Run_button_up():
 	emit_signal("reset_signal")
 
 func _on_Main_Menu_button_up():
+	SceneSkript.level= 0
+	SceneSkript.change_allowed= true
 	get_tree().change_scene("res://scenes/MainMenu.tscn")
-
-
 
 func _on_Button_button_up():
 	pass # Replace with function body.
