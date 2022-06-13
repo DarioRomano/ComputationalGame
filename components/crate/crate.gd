@@ -9,7 +9,7 @@ export (int) var speed= 0
 var is_breaking = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	connect("SceneScript.change_allowed", self, "reset_box")
+	pass
 
 func _physics_process(delta):
 	var movement= direction * speed * delta
