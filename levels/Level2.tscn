@@ -29,7 +29,7 @@ position = Vector2( 210, -1120 )
 z_index = -2
 
 [node name="AnimatedSprite" parent="Crate/RigidBody2D" index="0"]
-frame = 2
+frame = 0
 
 [node name="Goal" parent="." instance=ExtResource( 7 )]
 position = Vector2( -112, 272 )
@@ -116,9 +116,6 @@ position = Vector2( 582, 845 )
 
 [node name="StaticBody2D10" parent="colliders" instance=ExtResource( 10 )]
 position = Vector2( 462, 904 )
-
-[connection signal="reset_signal" from="CanvasLayer/MenuWithButtons" to="color_sorter/MachineBody" method="_on_MenuWithButtons_reset_signal"]
-[connection signal="reset_signal" from="CanvasLayer/MenuWithButtons" to="Spawner" method="_on_MenuWithButtons_reset_signal"]
 
 [editable path="color_sorter"]
 [editable path="color_sorter/MachineBody/Down"]

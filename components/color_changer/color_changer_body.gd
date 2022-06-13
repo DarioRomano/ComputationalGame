@@ -12,6 +12,7 @@ var boxList_right=[]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_tree().get_root().get_node("./Node2D2/SpawnTimer").connect("timeout", self, "_on_SpawnTimer_timeout")
+	get_tree().get_root().get_node("./Node2D2/CanvasLayer/MenuWithButtons").connect("reset_signal", self, "_on_MenuWithButtons_reset_signal")
 	#print("Ready done")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
