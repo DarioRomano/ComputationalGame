@@ -79,7 +79,6 @@ z_index = 1
 
 [connection signal="reset_signal" from="CanvasLayer/MenuWithButtons" to="color_sorter/MachineBody" method="_on_MenuWithButtons_reset_signal"]
 [connection signal="reset_signal" from="CanvasLayer/MenuWithButtons" to="Spawner" method="_on_MenuWithButtons_reset_signal"]
-[connection signal="timeout" from="SpawnTimer" to="color_sorter/MachineBody" method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="SpawnTimer" to="CanvasLayer/MenuWithButtons" method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="SpawnTimer" to="Spawner" method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="SpawnTimer" to="color_changer/MachineBody" method="_on_SpawnTimer_timeout"]

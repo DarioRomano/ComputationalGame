@@ -18,7 +18,8 @@ func _physics_process(delta):
 		break_creat()
 
 func delete_crate():
-	queue_free()
+	#get_parent().get_parent().remove_child(get_parent())
+	get_parent().queue_free()
 
 func break_creat():
 	is_breaking = true

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scenes/Spawner.gd" type="Script" id=1]
+[ext_resource path="res://components/spawner/Spawner.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprite/spawner/spawner.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/DIGITALDREAMFAT.ttf" type="DynamicFontData" id=3]
 
