@@ -18,6 +18,7 @@ func _ready():
 #	yield(get_tree().create_timer(2.0), "timeout")
 	if get_tree().get_root().get_node_or_null("./Node2D2/SpawnTimer") != null:
 		get_tree().get_root().get_node("./Node2D2/SpawnTimer").connect("timeout", self, "_on_SpawnTimer_timeout")
+		get_tree().get_root().get_node("./Node2D2/CanvasLayer/MenuWithButtons").connect("reset_signal", self, "_on_MenuWithButtons_reset_signal")
 	randomize()
 	while infinite_spawning:
 		creat_inf_box()
