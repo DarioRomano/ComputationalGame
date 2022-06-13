@@ -23,6 +23,7 @@ func _ready():
 		creat_inf_box()
 		var rnd_time = randf() + 1.0
 		yield(get_tree().create_timer(rnd_time), "timeout")
+	$Label.text=String(SceneSkript.spawnList.size())
 #	for n in SceneSkript.boxes:
 #		creat_box(n)
 #		yield(get_tree().create_timer(2.0), "timeout")
@@ -37,6 +38,7 @@ func creat_inf_box():
 	crate_instance.position = Vector2(0,0)
 	crate_instance.get_node("RigidBody2D").direction=direction
 	crate_instance.scale=self.scale
+	crate_instance.z_index=$Sprite.z_index-1
 	var rnd_num = randi() % 4
 	if rnd_num == 0:
 		crate_instance.modulate= colors.orange
@@ -53,7 +55,8 @@ func creat_box(n):
 	var crate_instance = Crate.instance()
 	crate_instance.position = Vector2(0,0)
 	crate_instance.get_node("RigidBody2D").direction=direction
-	crate_instance.scale=self.scale
+	crate_instance.scale=self.scale	
+	crate_instance.z_index=$Sprite.z_index-1
 #	randomize()
 #	var rnd_num = randi() % 4
 #	if rnd_num == 0:
@@ -76,9 +79,11 @@ func _on_SpawnTimer_timeout():
 	if n < SceneSkript.spawnList.size():
 		creat_box(n)
 		n+= 1
+	$Label.text=String(SceneSkript.spawnList.size()-n)
 
 func _on_MenuWithButtons_reset_signal():
 	for ch in get_children():
 		if (ch.get_node_or_null("RigidBody2D")!= null) and ch.get_node("RigidBody2D").has_method("delete_crate"):
 			ch.get_node("RigidBody2D").delete_crate()
 	n= 0
+	$Label.text=String(SceneSkript.spawnList.size())

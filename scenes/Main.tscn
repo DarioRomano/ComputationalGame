@@ -28,7 +28,7 @@ position = Vector2( 210, -1120 )
 z_index = -2
 
 [node name="AnimatedSprite" parent="Crate/RigidBody2D" index="0"]
-frame = 1
+frame = 2
 
 [node name="Goal" parent="." instance=ExtResource( 7 )]
 modulate = Color( 0.960784, 0.137255, 0, 1 )
