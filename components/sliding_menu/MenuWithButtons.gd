@@ -10,9 +10,11 @@ func _on_HideMenu_button_up(): #Signal
 	if (IsMenuShown == false):
 		$MwBAnimator.play("Slide In")
 		IsMenuShown = true
+		get_node("PanelContainer/HBoxContainer/ButtonAndText2/HideMenu").text=">"
 	else:
 		$MwBAnimator.play("MenuSlideOut")
 		IsMenuShown = false
+		get_node("PanelContainer/HBoxContainer/ButtonAndText2/HideMenu").text="<"
 		
 	#You could also have relseased the grab using
 	#$PanelContainer/ButtonAndText/HBoxContainer5/HideMenu.release_focus()
@@ -56,3 +58,7 @@ func _on_Stop_Run_button_up():
 func _on_Main_Menu_button_up():
 	get_tree().change_scene("res://scenes/MainMenu.tscn")
 
+
+
+func _on_Button_button_up():
+	pass # Replace with function body.

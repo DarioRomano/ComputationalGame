@@ -18,28 +18,26 @@ z_index = 1
 
 [node name="MachineBody" parent="color_sorter" index="0" groups=["color_sorter"]]
 
-[node name="RedCrate" parent="." instance=ExtResource( 4 )]
-modulate = Color( 0.960784, 0.137255, 0, 1 )
-position = Vector2( 210, -378 )
-z_index = -2
-
 [node name="Crate" parent="." instance=ExtResource( 4 )]
 position = Vector2( 210, -1120 )
 z_index = -2
+
+[node name="AnimatedSprite" parent="Crate/RigidBody2D" index="0"]
+frame = 0
 
 [node name="Goal" parent="." instance=ExtResource( 7 )]
 modulate = Color( 0.960784, 0.137255, 0, 1 )
 position = Vector2( 144, 32 )
 z_index = 1
-count = 10
+initial_count = 3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MenuWithButtons" parent="CanvasLayer" instance=ExtResource( 1 )]
-margin_left = -244.0
-margin_top = 2.0
-margin_right = 3.0
-margin_bottom = 193.0
+margin_left = -476.0
+margin_top = 7.0
+margin_right = 499.0
+margin_bottom = 198.0
 
 [node name="TouchCamera" type="Camera2D" parent="."]
 offset = Vector2( 515, 300 )
@@ -84,7 +82,6 @@ z_index = 1
 [editable path="color_sorter/MachineBody/Left"]
 [editable path="color_sorter/MachineBody/Up"]
 [editable path="Crate"]
-[editable path="Goal"]
 [editable path="CanvasLayer/MenuWithButtons"]
 [editable path="conveyor_belts"]
 [editable path="Background"]

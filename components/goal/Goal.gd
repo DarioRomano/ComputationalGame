@@ -9,6 +9,7 @@ signal goal_reached
 # var b = "text"
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Sprite.self_modulate=color
@@ -19,10 +20,10 @@ func _ready():
 	safed_count= count
 
 func reduce_count():
-	if not count==0:
-		count-=1
-		$Label.text=String(count)
-		if count==0:
+	if not curr_count==0:
+		curr_count-=1
+		$Label.text=String(curr_count)
+		if curr_count==0:
 			emit_signal("goal_reached")
 
 func _on_MenuWithButtons_reset_signal():
@@ -31,3 +32,7 @@ func _on_MenuWithButtons_reset_signal():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func reset_count():
+	curr_count=initial_count
+	$Label.text=String(curr_count)
