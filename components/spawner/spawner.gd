@@ -16,6 +16,8 @@ var colors = SceneSkript.colors
 # Called when the node enters the scene tree for the first time.
 func _ready():
 #	yield(get_tree().create_timer(2.0), "timeout")
+	if get_tree().get_root().get_node_or_null("./Node2D2/SpawnTimer") != null:
+		get_tree().get_root().get_node("./Node2D2/SpawnTimer").connect("timeout", self, "_on_SpawnTimer_timeout")
 	randomize()
 	while infinite_spawning:
 		creat_inf_box()
@@ -77,6 +79,6 @@ func _on_SpawnTimer_timeout():
 
 func _on_MenuWithButtons_reset_signal():
 	for ch in get_children():
-		if (ch.get_node("RigidBody2D")!= null) and ch.get_node("RigidBody2D").has_method("delete_crate"):
+		if (ch.get_node_or_null("RigidBody2D")!= null) and ch.get_node("RigidBody2D").has_method("delete_crate"):
 			ch.get_node("RigidBody2D").delete_crate()
 	n= 0
