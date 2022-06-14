@@ -33,6 +33,7 @@ func _ready():
 			1:c=SceneSkript.colors.red
 			2:c=SceneSkript.colors.blue
 			3:c=SceneSkript.colors.green
+			4:c=SceneSkript.colors.orange
 		b.get_node("Sprite").self_modulate=c
 		count=count+1
 	connect("button_up", self, "_on_StartButton_released")
@@ -87,7 +88,7 @@ func hide_menu(wobble):
 
 func _on_StartButton_released():
 	$HoldTimer.stop()
-	if not holding:
+	if (not holding) and SceneSkript.change_allowed:
 		disabled = true
 		if active:
 			hide_menu(true)
@@ -107,13 +108,14 @@ func _on_Tween_tween_all_completed():
 func _on_HoldTimer_timeout():
 	$HoldTimer.stop()
 	holding=true	
-	$AnimationPlayer.play("Wobble")
-	if(negated):
-		negated=false
-		change_crosslines(false)
-	else:
-		negated=true		
-		change_crosslines(true)
+	if SceneSkript.change_allowed:
+		$AnimationPlayer.play("Wobble")
+		if(negated):
+			negated=false
+			change_crosslines(false)
+		else:
+			negated=true		
+			change_crosslines(true)
 
 func change_crosslines(visible):
 	if visible:

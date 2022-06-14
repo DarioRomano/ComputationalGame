@@ -1,11 +1,10 @@
 extends Camera2D
 
 export (NodePath) var target
-
 var target_return_enabled = true
 var target_return_rate = 0.02
-var min_zoom = 0.5
-var max_zoom = 2
+var min_zoom = .5
+var max_zoom = 1
 var zoom_sensitivity = 10
 var zoom_speed = 0.05
 

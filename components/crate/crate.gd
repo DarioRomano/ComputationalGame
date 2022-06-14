@@ -8,10 +8,9 @@ export var direction= Vector2.DOWN
 export (int) var speed= 0
 var is_breaking = false
 # Called when the node enters the scene tree for the first time.
-#func _ready():
-#	direction=Vector2.DOWN
-	
-	
+func _ready():
+	pass
+
 func _physics_process(delta):
 	var movement= direction * speed * delta
 	var collide = move_and_collide(movement)
@@ -19,7 +18,8 @@ func _physics_process(delta):
 		break_creat()
 
 func delete_crate():
-	queue_free()
+	#get_parent().get_parent().remove_child(get_parent())
+	get_parent().queue_free()
 
 func break_creat():
 	is_breaking = true

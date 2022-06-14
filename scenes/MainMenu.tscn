@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/StartMainScene.gd" type="Script" id=1]
-[ext_resource path="res://assets/Roboto-Medium.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/Roboto-Medium.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://components/conveyor_belt/conveyor_belt.tscn" type="PackedScene" id=3]
 [ext_resource path="res://components/background/background.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/spawner/spawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://components/goal/Goal.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 200
@@ -84,12 +85,18 @@ scale = Vector2( 1.5, 1.5 )
 speed = 120
 infinite_spawning = true
 
+[node name="Goal" parent="ColorRect/Spawner3" instance=ExtResource( 6 )]
+position = Vector2( 0, 920 )
+
 [node name="Spawner2" parent="ColorRect" instance=ExtResource( 5 )]
 position = Vector2( 2030, 350 )
 scale = Vector2( 1.5, 1.5 )
 speed = 120
 infinite_spawning = true
 direction = Vector2( -1, 0 )
+
+[node name="Goal" parent="ColorRect/Spawner2" instance=ExtResource( 6 )]
+position = Vector2( -1410, 0 )
 
 [node name="Spawner" parent="ColorRect" instance=ExtResource( 5 )]
 position = Vector2( -80, 478 )
@@ -98,6 +105,9 @@ speed = 120
 infinite_spawning = true
 direction = Vector2( 1, 0 )
 
+[node name="Goal" parent="ColorRect/Spawner" instance=ExtResource( 6 )]
+position = Vector2( 1410, 0 )
+
 [node name="Spawner4" parent="ColorRect" instance=ExtResource( 5 )]
 position = Vector2( 1632, 1300 )
 scale = Vector2( 1.5, 1.5 )
@@ -105,12 +115,16 @@ speed = 120
 infinite_spawning = true
 direction = Vector2( 0, -1 )
 
+[node name="Goal" parent="ColorRect/Spawner4" instance=ExtResource( 6 )]
+position = Vector2( 0, -920 )
+
 [connection signal="pressed" from="ColorRect/StartButton" to="ColorRect" method="_on_Start_Button_pressed"]
 [connection signal="pressed" from="ColorRect/ExitButton" to="ColorRect" method="_on_Exit_Button_pressed"]
 
 [editable path="ColorRect/conveyor_belts"]
 [editable path="ColorRect/Background"]
 [editable path="ColorRect/Spawner3"]
+[editable path="ColorRect/Spawner3/Goal"]
 [editable path="ColorRect/Spawner2"]
 [editable path="ColorRect/Spawner"]
 [editable path="ColorRect/Spawner4"]
