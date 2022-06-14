@@ -14,8 +14,6 @@ extends Area2D
 
 func _on_GoalBody_body_entered(body):
 	if get_parent().color.is_equal_approx(SceneSkript.colors.white) or get_parent().color.is_equal_approx(body.get_parent().modulate):
-		var a= get_parent().modulate
-		var b= body.get_parent().modulate
 		body.delete_crate()
 		get_parent().reduce_count()
 	else:
